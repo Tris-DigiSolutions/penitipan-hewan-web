@@ -7,7 +7,7 @@ class Auth extends CI_Controller
     {
         $data['title'] = 'Selamat Datang di Web Hewan';
         $this->load->view('templates/header_auth', $data);
-        $this->load->view('home/index', $data);
+        $this->load->view('auth/login', $data);
         $this->load->view('templates/footer_auth', $data);
     }
 }
