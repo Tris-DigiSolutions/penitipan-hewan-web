@@ -1,20 +1,53 @@
-<div class="form-container sign-in-container">
-    <form class="user" action="<?= base_url('auth/login'); ?>" method="post">
-        <h1>Sign in</h1>
-        <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
-        <input type="email" name="email" placeholder="Email" value="<?= set_value('email'); ?>" />
-        <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
-        <input type="password" name="password" placeholder="Password" />
-        <a href="#">Forgot your password?</a>
-        <button type="submit">Sign In</button>
-    </form>
-</div>
-<div class="overlay-container">
-    <div class="overlay">
-        <div class="overlay-panel overlay-right">
-            <h1>Selamat Datang di PETSHOP!</h1>
-            <p>Buat akun untuk mendapatkan informasi lebih lanjut tentang PETSHOP kami untuk kemudahan dalam memberikan layanan penitipan hewan</p>
-            <a href="<?= base_url('auth/registration'); ?>">Sign Up</a>
+<div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+        <div class="col-xl-10 col-lg-12 col-md-9">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                </div>
+                                <?= $this->session->flashdata('message'); ?>
+                                <form class="user" method="post" action="<?= base_url('auth'); ?>">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Enter Email Address..." value="<?= set_value('email', ''); ?>">
+                                        <div class="ml-3">
+                                            <small class="text-danger"><?= form_error('email'); ?></small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
+                                        <div class="ml-3">
+                                            <small class="text-danger"><?= form_error('password'); ?></small>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        Login
+                                    </button>
+                                </form>
+                                <hr>
+                                <div class="text-center">
+                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                </div>
+                                <div class="text-center">
+                                    <a class="small" href="<?= base_url('auth/registration'); ?>">Create an Account!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
     </div>
+
 </div>
