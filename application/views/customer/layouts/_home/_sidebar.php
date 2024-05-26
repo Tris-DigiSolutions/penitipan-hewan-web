@@ -5,7 +5,7 @@
 		<div class="sidebar-brand-icon">
 			<i class="fas fa-cat"></i>
 		</div>
-		<div class="sidebar-brand-text mx-3 text-uppercase">Paw-Paw</div>
+		<div class="sidebar-brand-text mx-3 text-uppercase">PetShop</div>
 	</a>
 
 	<!-- Divider -->
@@ -34,7 +34,7 @@
 	<li class="nav-item">
 		<a class="nav-link" href="<?= base_url("grooming"); ?>">
 			<i class="fas fa-fw fa-cat"></i>
-			<span>Status Grooming</span>
+			<span>Status Pet Boarding</span>
 		</a>
 	</li>
 	<li class="nav-item">

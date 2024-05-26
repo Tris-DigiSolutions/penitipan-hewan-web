@@ -26,9 +26,11 @@
 
 					<!-- Page Heading -->
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Status Grooming</h1>
-						<a href="<?= base_url("grooming/register") ?>" class="btn btn-primary shadow-sm"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#ffffff" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
-						Daftar Grooming Baru</a>
+						<h1 class="h3 mb-0 text-gray-800">Status Pet Boarding Service</h1>
+						<a href="<?= base_url("grooming/register") ?>" class="btn btn-primary shadow-sm"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+								<path fill="#ffffff" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+							</svg>
+							Daftar Pet Boarding Service Baru</a>
 					</div>
 					<!-- alert flashdata -->
 					<div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
@@ -42,10 +44,11 @@
 											<th>No.</th>
 											<th>Nama Customer</th>
 											<th>Jenis Peliharaan</th>
-											<th>Paket Grooming</th>
-											<th>Biaya Grooming</th>
+											<th>Paket Pet Boarding Service</th>
+											<th>Biaya Pet Boarding Service</th>
 											<th>Status</th>
 											<th>Tanggal Masuk</th>
+											<th>Tanggal Keluar</th>
 											<th>Aksi</th>
 										</tr>
 									</thead>
@@ -76,8 +79,9 @@
 													<?php endif; ?>
 												</td>
 												<td><?= date('d F Y', strtotime($grooming["date_created"])) ?></td>
+												<td><?= date('d F Y', strtotime($grooming["date_finished"])) ?></td>
 												<td>
-													<a href="<?= base_url("grooming/detail/" . $grooming["grooming_id"]) ?>" class="btn btn-info btn-sm">Detail Grooming</a>
+													<a href="<?= base_url("grooming/detail/" . $grooming["grooming_id"]) ?>" class="btn btn-info btn-sm">Detail Pet Boarding Service</a>
 													<!-- <a href="<?= base_url("grooming/hapus/" . $grooming["grooming_id"]) ?>" class="btn btn-danger btn-sm button-delete">Hapus</a> -->
 												</td>
 											</tr>
@@ -117,7 +121,7 @@
 		if (flashData) {
 			Swal.fire({
 				title: 'Berhasil',
-				text: 'Grooming berhasil ' + flashData,
+				text: 'Boarding Service berhasil ' + flashData,
 				icon: 'success'
 			});
 		}
@@ -130,7 +134,7 @@
 
 			Swal.fire({
 				title: 'Kamu yakin?',
-				text: "Data grooming kamu akan dihapus!",
+				text: "Data boarding service kamu akan dihapus!",
 				icon: 'warning',
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',

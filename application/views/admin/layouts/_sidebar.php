@@ -1,7 +1,7 @@
 <div class="main-sidebar bg-secondary sidebar-style-2">
 	<aside id="sidebar-wrapper">
 		<div class="sidebar-brand">
-			<a href="<?= base_url() ?>">Paw-Paw Petshop</a>
+			<a href="<?= base_url() ?>">Petshop</a>
 		</div>
 		<div class="sidebar-brand sidebar-brand-sm">
 			<a href="<?= base_url() ?>">PP</a>

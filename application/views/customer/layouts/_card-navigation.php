@@ -3,7 +3,7 @@
         <ul class="list-group">
             <li class="list-group-item"><a href="<?= base_url("home") ?>">Beranda</a></li>
             <li class="list-group-item"><a href="">Keranjang Belanja</a></li>
-            <li class="list-group-item"><a href="<?= base_url("grooming") ?>">Grooming</a></li>
+            <li class="list-group-item"><a href="<?= base_url("grooming") ?>">Pet Boarding Service</a></li>
             <li class="list-group-item"><a href="<?= base_url("profile") ?>">Profile Saya</a></li>
             <li class="list-group-item"><a href="<?= base_url("logout") ?>" class="text-danger">Logout</a></li>
         </ul>

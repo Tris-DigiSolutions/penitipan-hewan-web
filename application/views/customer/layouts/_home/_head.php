@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Paw-Paw - <?= $page_title; ?></title>
+    <title>PetShop - <?= $page_title; ?></title>
 
 
     <!-- Custom fonts for this template-->

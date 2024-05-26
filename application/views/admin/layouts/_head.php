@@ -1,10 +1,10 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Paw-Paw Petshop | <?= $page_title; ?></title>
+    <title>Petshop | <?= $page_title; ?></title>
 
     <!-- Fav Icon -->
-	<link rel="shortcut icon" href="<?= base_url("assets/customer/img/pet-pet.png")?>" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= base_url("assets/customer/img/pet-pet.png") ?>" type="image/x-icon">
     <!-- General CSS Files -->
     <link rel="stylesheet" href="<?= base_url("assets/admin/modules/bootstrap/css/bootstrap.min.css") ?>">
     <link rel="stylesheet" href="<?= base_url("assets/admin/modules/fontawesome/css/all.min.css") ?>">

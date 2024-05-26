@@ -60,18 +60,18 @@
 											<?= form_error('pet_type', '<div class="invalid-feedback font-weight-bold pl-1">', '</div>') ?>
 										</div>
 										<div class="form-group d-none" id="catPackage">
-											<label for="package_id">Paket Grooming Kucing</label>
+											<label for="package_id">Paket Boarding Service Kucing</label>
 											<select name="package_id" id="package_id" class="form-control">
-												<option value="" disabled selected>--Pilih Paket Grooming--</option>
+												<option value="" disabled selected>--Pilih Paket Pet Boarding Service--</option>
 												<?php foreach ($packages as $package) : ?>
 													<option value="<?= $package["package_id"] ?>"><?= $package["name"] ?> | IDR. <?= number_format($package["cost_for_cat"]) ?></option>
 												<?php endforeach; ?>
 											</select>
 										</div>
 										<div class="form-group d-none" id="dogPackage">
-											<label for="package_id">Paket Grooming Anjing</label>
+											<label for="package_id">Paket Boarding Service Anjing</label>
 											<select name="package_id" id="package_id" class="form-control">
-												<option value="" disabled selected>--Pilih Paket Grooming--</option>
+												<option value="" disabled selected>--Pilih Paket Pet Boarding Service--</option>
 												<?php foreach ($packages as $package) : ?>
 													<option value="<?= $package["package_id"] ?>"><?= $package["name"] ?> | IDR. <?= number_format($package["cost_for_dog"]) ?></option>
 												<?php endforeach; ?>
@@ -82,7 +82,7 @@
 											<textarea name="notes" id="notes" rows="3" class="form-control"></textarea>
 										</div>
 										<div class="form-action">
-											<button type="submit" class="btn btn-primary">Register Grooming</button>
+											<button type="submit" class="btn btn-primary">Register Pet Boarding Service</button>
 											<a href="" class="btn btn-warning">Batalkan</a>
 										</div>
 									</form>

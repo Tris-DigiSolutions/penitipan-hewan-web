@@ -26,7 +26,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Detail Grooming</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Detail Pet Boarding Service</h1>
                     </div>
                     <!-- alert flashdata -->
                     <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
@@ -41,7 +41,7 @@
                             <p><?= $grooming["customer_address"]; ?></p>
                             <b>Jenis Peliharaan</b>
                             <p><?= $grooming["pet_type"]; ?></p>
-                            <b>Tarif Grooming</b>
+                            <b>Tarif Pet Boarding Service</b>
                             <p>
                                 <?php if ($grooming["pet_type"] == "Kucing") : ?>
                                     IDR. <?= number_format($grooming["cost_for_cat"]) ?>
@@ -49,7 +49,7 @@
                                     IDR. <?= number_format($grooming["cost_for_dog"]) ?>
                                 <?php endif; ?>
                             </p>
-                            <b>Status Grooming</b>
+                            <b>Status Pet Boarding Service</b>
                             <p>
                                 <?php if ($grooming["grooming_status"] == "Didaftarkan") : ?>
                                     <span class="badge badge-secondary"><?= $grooming["grooming_status"] ?></span>
@@ -61,7 +61,7 @@
                                     <span class="badge badge-success"><?= $grooming["grooming_status"] ?></span>
                                 <?php endif; ?>
                             </p>
-                            <b>Jenis Paket Grooming</b>
+                            <b>Jenis Paket Pet Boarding Service</b>
                             <p><?= $grooming["name"]; ?></p>
                             <b>Catatan Customer</b>
                             <p><?= $grooming["notes"] ?></p>

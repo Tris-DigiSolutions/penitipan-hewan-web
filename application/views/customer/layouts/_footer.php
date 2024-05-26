@@ -7,7 +7,7 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <h5 class="font-weight-bold">Contact</h5>
-                <p>Phone: +6 666 666 666<br>Email: paw@paw.com</p>
+                <p>Phone: +6 666 666 666<br>Email: pet@shop.com</p>
             </div>
             <div class="col-lg-3 col-md-6 footer-links">
                 <h5 class="font-weight-bold">Social Network</h5>
@@ -24,7 +24,7 @@
         </div>
 
         <div class="mt-5">
-            <span>&copy; Copyright <span id="tahun-hakcipta"></span>. Paw-Paw. All Rights Reserved</span>
+            <span>&copy; Copyright <span id="tahun-hakcipta"></span>. PetShop. All Rights Reserved</span>
         </div>
     </div>
 </footer>
