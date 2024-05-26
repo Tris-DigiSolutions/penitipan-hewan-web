@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 20, 2021 at 07:40 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 7.4.19
+-- Generation Time: May 26, 2024 at 09:47 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `petshop_web`
+-- Database: `web_hewan`
 --
 
 -- --------------------------------------------------------
@@ -35,7 +36,7 @@ CREATE TABLE `admins` (
   `password` varchar(255) NOT NULL,
   `role` enum('Admin','Staff') NOT NULL,
   `is_active` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -99,7 +100,7 @@ CREATE TABLE `carts` (
   `item_id` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
   `total_price` float NOT NULL,
-  `date_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -140,7 +141,7 @@ CREATE TABLE `customers` (
   `email` varchar(128) NOT NULL,
   `password` varchar(255) NOT NULL,
   `is_active` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -149,7 +150,8 @@ CREATE TABLE `customers` (
 
 INSERT INTO `customers` (`customer_id`, `name`, `avatar`, `phone`, `address`, `email`, `password`, `is_active`, `created_at`) VALUES
 (6, 'Site Customer', '1608357453866.png', '081939448487', 'Jl. Bunga Matahari, No.11 Gomong Lama, Mataram', 'customer@mail.com', '$2y$10$heyAPdEKex5I3SPZ5RA92OCP8cNqpapPFRWkuF/LPFqLZeuPOVC0m', 1, '2020-12-20 10:31:12'),
-(7, 'Muhammad Kuswari', 'default.jpg', '081803405952', 'Jl. Bunga Matahari, No.11 Gomong, Mataram.', 'muhammad.kuswari10@gmail.com', '$2y$10$XIuOvaiOTZ7RXQufTpgGOuAnMqvkAkgTNYz1imuWli48XsDwwLQsy', 1, '2021-06-19 13:55:16');
+(7, 'Muhammad Kuswari', 'default.jpg', '081803405952', 'Jl. Bunga Matahari, No.11 Gomong, Mataram.', 'muhammad.kuswari10@gmail.com', '$2y$10$XIuOvaiOTZ7RXQufTpgGOuAnMqvkAkgTNYz1imuWli48XsDwwLQsy', 1, '2021-06-19 13:55:16'),
+(8, 'Ihsan', 'default.jpg', '08086969', 'Jl.GGWP', 'ihsan@gmail.com', '$2y$10$qTokr.iLm4R.pg3aPbn2nONAJud0CWaAatfuXX33QS9.GKM9AXl0a', 1, '2024-05-25 14:43:21');
 
 -- --------------------------------------------------------
 
@@ -180,7 +182,7 @@ CREATE TABLE `groomings` (
   `package_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `notes` text NOT NULL,
-  `date_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `date_finished` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -208,7 +210,7 @@ CREATE TABLE `items` (
   `price` float NOT NULL,
   `description` text NOT NULL,
   `category_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -216,10 +218,10 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`item_id`, `name`, `slug`, `images`, `stock`, `price`, `description`, `category_id`, `created_at`) VALUES
-(3, 'Kandang Kucing model minimalis', 'kandang-kucing-model-minimalis', '1605519450652.jpeg', 10, 150000, 'Langsung dari pengrajin ????, Menggunakan kayu solid buka serbuk kayu sehingga tidak mudah lapuk dan awet ????, ✅ Seluruh foto di sini ASLI milik kami', 38, '2021-05-29 22:40:20'),
+(3, 'Kandang Kucing model minimalis', 'kandang-kucing-model-minimalis', '1605519450652.jpeg', 9, 150000, 'Langsung dari pengrajin ????, Menggunakan kayu solid buka serbuk kayu sehingga tidak mudah lapuk dan awet ????, ✅ Seluruh foto di sini ASLI milik kami', 38, '2024-05-25 18:07:25'),
 (5, 'Jual Kucing persia anakan umur 2 bulan', 'jual-kucing-persia-anakan-umur-2-bulan', '1605519915190.jpg', 0, 750000, 'kucing persia anakang umur 2 bulan. kucing persia anakang umur 2 bulan order sepasang harga 800rb', 40, '2020-12-21 06:04:59'),
 (6, 'Bolt 1Kg Tuna Ikan - Makanan Kucing Murah', 'bolt-1kg-tuna-ikan---makanan-kucing-murah', '1605520083844.jpg', 0, 19700, 'Jual Bolt 1Kg Tuna Ikan - Makanan Kucing Murah - Repack - Cat Food dengan harga Rp19.700 dari toko online', 37, '2021-05-29 22:38:35'),
-(7, 'Tokopedia Jual Pakan Kucing Me-o Meo Tuna 1.2 Kg', 'tokopedia-jual-pakan-kucing-me-o-meo-tuna-1.2-kg', '1605520258517.jpg', 79, 54000, 'Jual Pakan Kucing Me-o Meo Tuna 1.2 Kg dengan harga Rp54.000 . termurah', 37, '2021-05-29 06:02:00'),
+(7, 'Tokopedia Jual Pakan Kucing Me-o Meo Tuna 1.2 Kg', 'tokopedia-jual-pakan-kucing-me-o-meo-tuna-1.2-kg', '1605520258517.jpg', 78, 54000, 'Jual Pakan Kucing Me-o Meo Tuna 1.2 Kg dengan harga Rp54.000 . termurah', 37, '2024-05-25 18:07:25'),
 (12, 'Felibite makanan kucing bentuk ikan kemasan 1 kg', 'felibite-makanan-kucing-bentuk-ikan-kemasan-1-kg', '1605565403891.jpeg', 88, 67000, 'Belanja Felibite Bentuk IKAN Makanan Kucing Kemasan 1kg indonesia Murah - Belanja Makanan Kering di Lazada. FREE ONGKIR &amp; Bisa COD', 37, '0000-00-00 00:00:00'),
 (13, 'Jual kucing bar bar', 'jual-kucing-bar-bar', '1605565534933.jpg', 0, 290000, 'Jual kucing bar bar, sangat lincah. alasan jual karena mukanya ngeselin, pengen ngajak gelud tiap liat mukanya', 40, '2020-12-19 05:56:03'),
 (16, 'Kalung Kucing Murah meriah', 'kalung-kucing-murah-meriah', '1608357774815.jpg', 51, 35000, '&lt;p&gt;Kalung kucing dengan harga murah dan terjangkau&lt;/p&gt;', 42, '2021-05-29 22:35:54');
@@ -240,7 +242,7 @@ CREATE TABLE `orders` (
   `payment_slip` varchar(128) DEFAULT NULL,
   `total_payment` float NOT NULL,
   `order_status` enum('Masuk','Diproses','Diantar','Diterima') NOT NULL,
-  `order_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `info` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -252,7 +254,8 @@ INSERT INTO `orders` (`order_id`, `customer_id`, `receipent_name`, `receipent_ph
 (58, 6, 'Site Customer', '081939448487', 'Jl. Bunga Matahari, No.11 Gomong Lama, Mataram', 'transfer', '1622267634513.PNG', 600000, 'Diproses', '2021-05-29 15:24:26', 'Lunas'),
 (59, 6, 'Site Customer', '081939448487', 'Jl. Bunga Matahari, No.11 Gomong Lama, Mataram', 'cod', NULL, 54000, 'Diterima', '2021-05-29 15:24:37', 'Bayar Ditempat'),
 (60, 6, 'Muhammad Kuswari', '081939448487', 'Jl. Bunga Matahari, No.11 Gomong Lama, Mataram', 'transfer', '1622327754617.jpg', 2014700, 'Masuk', '2021-05-29 22:35:54', 'Lunas'),
-(61, 6, 'Site Customer', '081939448487', 'Jl. Bunga Matahari, No.11 Gomong Lama, Mataram', 'cod', NULL, 827400, 'Diproses', '2021-05-29 22:42:18', 'Bayar Ditempat');
+(61, 6, 'Site Customer', '081939448487', 'Jl. Bunga Matahari, No.11 Gomong Lama, Mataram', 'cod', NULL, 827400, 'Diproses', '2021-05-29 22:42:18', 'Bayar Ditempat'),
+(62, 8, 'Ihsan', '08086969', 'Jl.GGWP', 'cod', NULL, 204000, 'Masuk', '2024-05-25 18:07:25', 'Bayar Ditempat');
 
 -- --------------------------------------------------------
 
@@ -266,7 +269,7 @@ CREATE TABLE `order_details` (
   `item_id` int(11) NOT NULL,
   `qty` float NOT NULL,
   `total_price` float NOT NULL,
-  `date_order` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `date_order` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -278,7 +281,9 @@ INSERT INTO `order_details` (`oder_details_id`, `order_id`, `item_id`, `qty`, `t
 (37, 59, 7, 1, 54000, '2021-05-29 06:02:00'),
 (39, 60, 6, 51, 1004700, '2021-05-29 22:35:54'),
 (40, 60, 16, 1, 35000, '2021-05-29 22:35:54'),
-(41, 61, 6, 42, 827400, '2021-05-29 22:38:35');
+(41, 61, 6, 42, 827400, '2021-05-29 22:38:35'),
+(42, 62, 3, 1, 150000, '2024-05-25 18:07:25'),
+(43, 62, 7, 1, 54000, '2024-05-25 18:07:25');
 
 --
 -- Triggers `order_details`
@@ -304,7 +309,7 @@ CREATE TABLE `packages` (
   `description` text NOT NULL,
   `cost_for_cat` float NOT NULL,
   `cost_for_dog` float NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -439,7 +444,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `customer_tokens`
@@ -463,13 +468,13 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `oder_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `oder_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `packages`
