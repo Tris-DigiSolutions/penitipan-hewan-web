@@ -115,7 +115,7 @@ class Auth extends CI_Controller
 		$this->session->unset_userdata("created_at");
 		$this->session->unset_userdata("logged_in");
 		$this->session->set_flashdata('message', '<div class="alert alert-success">Kamu berhasil logout</div>');
-		redirect("landing");
+		redirect("login");
 	}
 
 	public function blocked()

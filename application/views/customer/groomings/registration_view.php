@@ -78,12 +78,22 @@
 											</select>
 										</div>
 										<div class="form-group">
+											<label for="date_created">Tanggal Check-in</label>
+											<input type="date" id="date_created" name="date_created" class="form-control <?= form_error('date_created') ? 'is-invalid' : ''; ?>" value="<?= set_value('date_created'); ?>">
+											<?= form_error('date_created', '<div class="invalid-feedback font-weight-bold pl-1">', '</div>') ?>
+										</div>
+										<div class="form-group">
+											<label for="date_finished">Tanggal Check-out</label>
+											<input type="date" id="date_finished" name="date_finished" class="form-control <?= form_error('date_finished') ? 'is-invalid' : ''; ?>" value="<?= set_value('date_finished'); ?>">
+											<?= form_error('date_finished', '<div class="invalid-feedback font-weight-bold pl-1">', '</div>') ?>
+										</div>
+										<div class="form-group">
 											<label for="notes">Catatan Customer (Opsional)</label>
 											<textarea name="notes" id="notes" rows="3" class="form-control"></textarea>
 										</div>
 										<div class="form-action">
 											<button type="submit" class="btn btn-primary">Register Pet Boarding Service</button>
-											<a href="" class="btn btn-warning">Batalkan</a>
+											<a href="<?= base_url('landing'); ?>" class="btn btn-warning">Batalkan</a>
 										</div>
 									</form>
 								</div>

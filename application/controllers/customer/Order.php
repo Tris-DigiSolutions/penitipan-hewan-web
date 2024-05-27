@@ -34,25 +34,20 @@ class Order extends CI_Controller
 			$receipentPhone = $this->input->post("receipent_phone");
 			$receipentAddress = $this->input->post("receipent_address");
 			$paymentMethod = "transfer";
-
-			// Initialize payment slip variable
-			$paymentSlip = '';
-
-			if (!empty($_FILES["payment_slip"]["name"])) {
-				$config["allowed_types"] = "jpg|jpeg|png|bmp|gif";
-				$config["upload_path"] = "./assets/uploads/payments/";
+			$paymentSlip = $_FILES["payment_slip"]["name"];
+			if ($paymentSlip) {
+				$config['allowed_types'] = 'jpg|jpeg|png|bmp|gif';
+				// $config['max_size'] = 1024; //1 MB
+				$config['upload_path'] = './assets/uploads/payments/';
 				$config['file_name'] = round(microtime(true) * 1000);
-
-				$this->load->library("upload", $config);
-				if ($this->upload->do_upload("payment_slip")) {
-					$paymentSlip = $this->upload->data("file_name");
+				$this->load->library('upload', $config);
+				if ($this->upload->do_upload('payment_slip')) {
+					$paymentSlip = $this->upload->data('file_name');
 				} else {
-					$data['upload_error'] = $this->upload->display_errors();
-					$this->load->view("customer/order/payment/transfer_view", $data);
-					return;
+					// echo $this->display_error();
+					echo "Upload gagal";
 				}
 			}
-
 			$totalPayment = $this->input->post("total_payment");
 
 			$dataOrder = [
@@ -67,8 +62,7 @@ class Order extends CI_Controller
 			];
 
 			$idOrder = $this->Product_model->addOrder($dataOrder);
-
-			// Input detail order
+			// input detail order disini
 			if ($cart = $this->cart->contents()) {
 				foreach ($cart as $item) {
 					$dataDetailOrder = array(
@@ -80,7 +74,6 @@ class Order extends CI_Controller
 					$this->Product_model->addOrderDetail($dataDetailOrder);
 				}
 			}
-
 			$this->cart->destroy();
 			redirect("checkout-success");
 		}
