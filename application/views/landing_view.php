@@ -30,7 +30,7 @@
 								<p class="text-">Tempat Terbaik ntuk Menitipkan Hewan
 									Kesayanganmu</p>
 								<div>
-									<a href="<?= base_url("produk") ?>"
+									<a href="grooming/register"
 										class="btn btn-primary px-4 font-weight-bold text-white shadow text-uppercase mt-2">Booking
 										Sekarang</a>
 								</div>
