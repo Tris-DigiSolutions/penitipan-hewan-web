@@ -17,6 +17,6 @@ Buka Chrome ketik url : https://localhost/penitipan-hewan-web
 # Install On Windows, MacOS, Linux ✅
 
 ```bash
-$ git clone
+$ git clone https://github.com/Tris-DigiSolutions/penitipan-hewan-web.git
 $ cd penitipan-hewan-web
 ```
