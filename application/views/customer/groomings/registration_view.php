@@ -93,7 +93,7 @@
 										</div>
 										<div class="form-action">
 											<button type="submit" class="btn btn-primary">Register Pet Boarding Service</button>
-											<a href="" class="btn btn-warning">Batalkan</a>
+											<a href="<?= base_url('landing'); ?>" class="btn btn-warning">Batalkan</a>
 										</div>
 									</form>
 								</div>
