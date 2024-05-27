@@ -63,10 +63,12 @@
                             </p>
                             <b>Jenis Paket Pet Boarding Service</b>
                             <p><?= $grooming["name"]; ?></p>
-                            <b>Catatan Customer</b>
-                            <p><?= $grooming["notes"] ?></p>
                             <b>Tanggal Masuk</b>
                             <p><?= date('d F Y', strtotime($grooming["date_created"])); ?></p>
+                            <b>Tanggal Keluar</b>
+                            <p><?= date('d F Y', strtotime($grooming["date_finished"])); ?></p>
+                            <b>Catatan Customer</b>
+                            <p><?= $grooming["notes"] ?></p>
                         </div>
                     </div>
 

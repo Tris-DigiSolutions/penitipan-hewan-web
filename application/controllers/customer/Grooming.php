@@ -35,6 +35,8 @@ class Grooming extends CI_Controller
 			$petType = $this->input->post("pet_type");
 			$packageId = $this->input->post("package_id");
 			$customerNotes = htmlspecialchars($this->input->post("notes", true));
+			$checkInDate = $this->input->post("date_created");
+			$checkOutDate = $this->input->post("date_finished");
 
 			$groomingData = [
 				"customer_name" => $customerName,
@@ -44,7 +46,9 @@ class Grooming extends CI_Controller
 				"grooming_status" => "Didaftarkan",
 				"package_id" => $packageId,
 				"customer_id" => $this->session->userdata("customer_id"),
-				"notes" => $customerNotes
+				"notes" => $customerNotes,
+				"date_created" => $checkInDate,
+				"date_finished" => $checkOutDate
 			];
 
 			$this->Grooming_model->registerGrooming($groomingData);
@@ -74,5 +78,7 @@ class Grooming extends CI_Controller
 		$this->form_validation->set_rules("customer_phone", "Phone Customer", "required");
 		$this->form_validation->set_rules("customer_address", "Alamat Customer", "required");
 		$this->form_validation->set_rules("pet_type", "Tipe Peliharaan", "required");
+		$this->form_validation->set_rules("date_created", "Check-in", "required");
+		$this->form_validation->set_rules("date_finished", "Check-out", "required");
 	}
 }
