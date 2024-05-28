@@ -35,6 +35,15 @@
 							<div class="row">
 								<div class="col-8 mx-auto">
 									<form action="<?= base_url("grooming/register") ?>" method="post">
+										<!-- alert kuota masih belom fix -->
+										<div class="alert alert-success" role="alert" id="kuota">
+											Kuota Pet Boarding Tersedia
+										</div>
+										<div class="alert alert-danger" role="alert" id="kuota">
+											Kuota Pet Boarding Tidak Tersedia
+										</div>
+										<!-- end of alert kuota masih belom fix -->
+
 										<div class="form-group">
 											<label for="customer_name">Nama Customer</label>
 											<input type="text" id="customer_name" name="customer_name" class="form-control <?= form_error('customer_name') ? 'is-invalid' : ''; ?>" value="<?= $this->session->userdata("name"); ?>">
@@ -51,11 +60,6 @@
 											<?= form_error('customer_address', '<div class="invalid-feedback font-weight-bold pl-1">', '</div>') ?>
 										</div>
 
-										<!-- alert kuota masih belom fix -->
-										<div class="alert alert-success d-none" role="alert">
-											A simple success alert—check it out!
-										</div>
-										<!-- end of alert kuota masih belom fix -->
 
 										<div class="form-group">
 											<label for="pet_type">Jenis Peliharaan</label>
