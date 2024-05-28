@@ -36,10 +36,10 @@
 								<div class="col-8 mx-auto">
 									<form action="<?= base_url("grooming/register") ?>" method="post">
 										<!-- alert kuota masih belom fix -->
-										<div class="alert alert-success" role="alert" id="kuota">
+										<div class="alert alert-success d-none" role="alert" id="kuota">
 											Kuota Pet Boarding Tersedia
 										</div>
-										<div class="alert alert-danger" role="alert" id="kuota">
+										<div class="alert alert-danger d-none" role="alert" id="kuota">
 											Kuota Pet Boarding Tidak Tersedia
 										</div>
 										<!-- end of alert kuota masih belom fix -->
