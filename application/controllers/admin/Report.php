@@ -106,7 +106,7 @@ class Report extends CI_Controller
         $tahun = $_GET["years"];
         $namaBulan = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
 
-        $data["keterangan"] = "Data Grooming Bulan " . $namaBulan[$bulan] . "" . $tahun;
+        $data["keterangan"] = "Data Pet Boarding Bulan " . $namaBulan[$bulan] . "" . $tahun;
         $data["url_cetak"] = 'laporan/cetak?filter=1&bulan=' . $bulan . '&tahun=' . $tahun;
         $data["grooming"] = $this->Report_model->viewGroomingByMonth($bulan, $tahun);
         if (!$data["grooming"]) {
@@ -123,14 +123,14 @@ class Report extends CI_Controller
 
         $pdf = new Spipu\Html2Pdf\Html2Pdf('P', 'A4', 'en');
         $pdf->WriteHTML($html);
-        $pdf->Output('LAPORAN_GROOMING_BULANAN.pdf', 'D');
+        $pdf->Output('LAPORAN_PET_BOARDING_BULANAN.pdf', 'D');
     }
 
     private function _printGroomingReportsByYear()
     {
         $tahun = $_GET["years"];
 
-        $data["keterangan"] = "Data Grooming tahun" . $tahun;
+        $data["keterangan"] = "Data Pet Boarding Tahun" . $tahun;
         $data["url_cetak"] = "laporan/cetak?filter=2&tahun=" . $tahun;
         $data["grooming"] = $this->Report_model->viewGroomingByYear($tahun);
         if (!$data["grooming"]) {
@@ -147,6 +147,6 @@ class Report extends CI_Controller
 
         $pdf = new Spipu\Html2Pdf\Html2Pdf('P', 'A4', 'en');
         $pdf->WriteHTML($html);
-        $pdf->Output('LAPORAN_GROOMING_TAHUNAN.pdf', 'D');
+        $pdf->Output('LAPORAN_PET_BOARDING_TAHUNAN.pdf', 'D');
     }
 }
