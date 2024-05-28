@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 28, 2024 at 05:59 PM
+-- Generation Time: May 28, 2024 at 06:37 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -152,7 +152,6 @@ CREATE TABLE `customers` (
 
 INSERT INTO `customers` (`customer_id`, `name`, `avatar`, `phone`, `address`, `email`, `password`, `is_active`, `created_at`) VALUES
 (6, 'Site Customer', '1608357453866.png', '081939448487', 'Jl. Bunga Matahari, No.11 Gomong Lama, Mataram', 'customer@mail.com', '$2y$10$heyAPdEKex5I3SPZ5RA92OCP8cNqpapPFRWkuF/LPFqLZeuPOVC0m', 1, '2020-12-20 10:31:12'),
-(7, 'Muhammad Kuswari', 'default.jpg', '081803405952', 'Jl. Bunga Matahari, No.11 Gomong, Mataram.', 'muhammad.kuswari10@gmail.com', '$2y$10$XIuOvaiOTZ7RXQufTpgGOuAnMqvkAkgTNYz1imuWli48XsDwwLQsy', 1, '2021-06-19 13:55:16'),
 (8, 'Ihsan', 'default.jpg', '08086969', 'Jl.GGWP', 'ihsan@gmail.com', '$2y$10$qTokr.iLm4R.pg3aPbn2nONAJud0CWaAatfuXX33QS9.GKM9AXl0a', 1, '2024-05-25 14:43:21');
 
 -- --------------------------------------------------------
@@ -198,7 +197,8 @@ INSERT INTO `groomings` (`grooming_id`, `customer_name`, `customer_phone`, `cust
 (17, 'Site Customer', '081939448487', 'Jl. Bunga Matahari, No.11 Gomong Lama, Mataram', 'Kucing', 'Diterima', 12, 6, 'Test', '2021-05-30', '2024-05-26'),
 (18, 'Ihsan', '08086969', 'Jl.GGWP', 'Kucing', 'Didaftarkan', 15, 8, 'ajak mabar ye', '2024-05-26', '2024-05-26'),
 (19, 'Ihsan', '08086969', 'Jl.GGWP', 'Anjing', 'Didaftarkan', 12, 8, 'yeboi', '2024-05-26', '2024-05-26'),
-(20, 'Ihsan', '08086969', 'Jl.GGWP', 'Kucing', 'Didaftarkan', 12, 8, '', '2024-05-28', '2024-05-30');
+(20, 'Ihsan', '08086969', 'Jl.GGWP', 'Kucing', 'Didaftarkan', 12, 8, '', '2024-05-28', '2024-05-30'),
+(21, 'Ihsan', '08086969', 'Jl.GGWP', 'Kucing', 'Didaftarkan', 14, 8, 'yg bener!', '2024-05-29', '2024-06-01');
 
 -- --------------------------------------------------------
 
@@ -476,7 +476,7 @@ ALTER TABLE `customer_tokens`
 -- AUTO_INCREMENT for table `groomings`
 --
 ALTER TABLE `groomings`
-  MODIFY `grooming_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `grooming_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `items`
