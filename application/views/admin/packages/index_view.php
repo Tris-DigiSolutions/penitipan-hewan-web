@@ -21,7 +21,7 @@
                 <section class="section">
                     <div class="section-header d-flex justify-content-between">
                         <h1><?= $page_title; ?></h1>
-                        <a href="javascript:void(0)" class="btn btn-primary btn-lg showCreateModal" onclick="addPackage()">Tambah Paket Grooming</a>
+                        <a href="javascript:void(0)" class="btn btn-primary btn-lg showCreateModal" onclick="addPackage()">Tambah Paket Pet Boarding</a>
                     </div>
                     <!-- alert flashdata -->
                     <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>

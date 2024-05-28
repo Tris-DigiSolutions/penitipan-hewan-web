@@ -50,6 +50,13 @@
 											<textarea name="customer_address" id="customer_address" rows="3" class="form-control <?= form_error('customer_address') ? 'is-invalid' : ''; ?>"><?= $this->session->userdata("address"); ?></textarea>
 											<?= form_error('customer_address', '<div class="invalid-feedback font-weight-bold pl-1">', '</div>') ?>
 										</div>
+
+										<!-- alert kuota masih belom fix -->
+										<div class="alert alert-success d-none" role="alert">
+											A simple success alert—check it out!
+										</div>
+										<!-- end of alert kuota masih belom fix -->
+
 										<div class="form-group">
 											<label for="pet_type">Jenis Peliharaan</label>
 											<select name="pet_type" id="pet_type" class="form-control <?= form_error('pet_type') ? 'is-invalid' : ''; ?>">
