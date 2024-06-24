@@ -15,7 +15,7 @@ class Package extends CI_Controller
 
 	public function index()
 	{
-		$data["page_title"] = "Kelola Paket Grooming";
+		$data["page_title"] = "Kelola Paket Pet Boarding Service";
 
 		$this->load->view("admin/packages/index_view", $data);
 	}

@@ -25,12 +25,16 @@
 	<div class="sidebar-heading">
 		Menu
 	</div>
-	<li class="nav-item">
+
+	<!--sementara ilangin dulu orderan saya-->
+	<li class="nav-item d-none">
 		<a class="nav-link" href="<?= base_url("orderan-saya"); ?>">
 			<i class="fas fa-fw fa-credit-card"></i>
 			<span>Orderan Saya</span>
 		</a>
 	</li>
+	<!--end of sementara ilangin dulu orderan saya-->
+
 	<li class="nav-item">
 		<a class="nav-link" href="<?= base_url("grooming"); ?>">
 			<i class="fas fa-fw fa-cat"></i>

@@ -34,8 +34,7 @@
                                             <label for="reports">Jenis Laporan</label>
                                             <select name="reports" id="reports" class="form-control">
                                                 <option value="" disabled selected>Pilih Jenis Laporan</option>
-                                                <option value="1">Penjualan</option>
-                                                <option value="2">Grooming</option>
+                                                <option value="2">Pet Boarding Service</option>
                                             </select>
                                         </div>
                                         <div class="form-group">

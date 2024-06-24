@@ -35,27 +35,14 @@
 							</div>
 						</div>
 						<div class="col-lg-3 col-md-6 mb-4">
-							<div class="card border-left-danger shadow h-80 py-2 bg-warning">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-2">
-											<div class="text-md font-weight-bold text-white text-uppercase mb-1">Jumlah Produk</div>
-											<div class="h1 mb-0 font-weight-bold text-white"><?= $total_products; ?></div>
-										</div>
-										<div><i class="fas fa-shopping-bag"></i></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 mb-4">
 							<div class="card border-left-danger shadow h-80 py-2 bg-danger">
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
-											<div class="text-md font-weight-bold text-white text-uppercase mb-1">Jumlah Grooming</div>
+											<div class="text-md font-weight-bold text-white text-uppercase mb-1">Jumlah Pet Boarding</div>
 											<div class="h1 mb-0 font-weight-bold text-white"><?= $total_groomings; ?></div>
 										</div>
-										<div><i class="far fa-file"></i></div>
+										<div><i class="far fa-cat"></i></div>
 									</div>
 								</div>
 							</div>

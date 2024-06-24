@@ -50,8 +50,8 @@
                 <th>Nama Customer</th>
                 <th>Nomor HP</th>
                 <th>Jenis Pet</th>
-                <th>Paket Grooming</th>
-                <th>Biaya Grooming</th>
+                <th>Paket Pet Boarding</th>
+                <th>Biaya Pet Boarding</th>
             </tr>
         </thead>
         <tbody>

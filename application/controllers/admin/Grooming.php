@@ -15,7 +15,7 @@ class Grooming extends CI_Controller
 
 	public function index()
 	{
-		$data["page_title"] = "Kelola Grooming Pelanggan";
+		$data["page_title"] = "Kelola Pet Boarding Pelanggan";
 		$data["groomings"] = $this->Grooming_model->getAllGroomings();
 
 		$this->load->view("admin/groomings/index_view", $data);
@@ -23,7 +23,7 @@ class Grooming extends CI_Controller
 
 	public function changeStatus($id)
 	{
-		$data["page_title"] = "Ubah Status Grooming";
+		$data["page_title"] = "Ubah Status Pet Boarding";
 		$data["grooming"] = $this->Grooming_model->getGroomingById($id);
 
 		$this->form_validation->set_rules("grooming_status", "Status Grooming", 'required');
@@ -39,7 +39,7 @@ class Grooming extends CI_Controller
 
 	public function detail($id)
 	{
-		$data["page_title"] = "Detail Data Grooming";
+		$data["page_title"] = "Detail Data Pet Boarding";
 		$data["grooming"] = $this->Grooming_model->getGroomingById($id);
 
 		$this->load->view("admin/groomings/detail_view", $data);
