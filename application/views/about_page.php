@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+	<?php $this->load->view("customer/layouts/_navbar"); ?>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="assets/css/styles.css" rel="stylesheet">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>PetShop - <?= $page_title; ?></title>
+
+
+    <!-- Custom fonts for this template-->
+    <link href="<?= base_url("assets/customer/vendor/fontawesome-free/css/all.min.css") ?>" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="<?= base_url("assets/customer/css/sb-admin-2.min.css") ?>" rel="stylesheet">
+    <!-- Custom styles for this page -->
+    <link href="<?= base_url("assets/customer/vendor/datatables/dataTables.bootstrap4.min.css") ?>" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 	<title>About Page</title>
 	<style>
 		.navbar {
@@ -65,39 +80,13 @@
 	</style>
 </head>
 <body>
-	<div class="container-d ">
-		<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-			<div class="container">
-				<a class="navbar-brand" href="#">
-					<h5>PETSHOP <i class="fas fa-paw"></i></h5>
-				</a>
-				
-				<div class="navbar-center d-none d-lg-flex">
-					<ul class="navbar-nav">
-						<li class="nav-item">
-							<a class="nav-link" href="#">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">About</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Service</a>
-						</li>
-					</ul>
-				</div>
-				
-				<div class="ml-auto d-flex align-items-center">
-					<a href="#"><i class="fas fa-user"></i></a>
-				</div>
-			</div>
-		</nav>
-<!-- END NAV -->
+	<div class="container-d " id="about">
 
 <!-- Landing page  ABOUT-->
 		<div class="container mt-5 pt-2 mb-5">
 			<div class="row landing-page d-flex justify-content-center align-items-center text-start">
 				<div class="col-lg-6 d-flex justify-content-center align-items-center">
-					<img src="<?php echo base_url('assets/img/cat.png'); ?>" class="img-fluid img-landing" alt="Petshop">
+					<img src="<?php echo base_url('assets/assets/img/cat.png'); ?>" class="img-fluid img-landing" alt="Petshop">
 				</div>
 				<div class="col-lg-6">
 					<h1 class="mb-3 mt-5 text-start">PET<p class="text-primary">SHOP <i class="fas fa-paw"></i></p></h1>
