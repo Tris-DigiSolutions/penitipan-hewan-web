@@ -22,9 +22,6 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 	<title>About Page</title>
 	<style>
-		.navbar {
-        border-bottom: 1px solid #ccc; /* Warna dan ketebalan garis dapat disesuaikan */
-    	}
 		.landing-page .img-landing {
 			max-width: 500px;
 			max-height: 500px;
@@ -36,7 +33,7 @@
 
 		.icon-service {
 			max-width: 70px;
-			max-height: 70px;
+			max-height: 70px;		
 		}
 		.vision-mission {
             padding: 100px 0;
@@ -77,6 +74,13 @@
             left: -20px;
             top: 6px;
         }
+		.img-padding {
+    	padding: 5px;
+		}
+
+		.h5-padding {
+    		padding: 5px;
+		}
 	</style>
 </head>
 <body>
@@ -90,14 +94,7 @@
 				</div>
 				<div class="col-lg-6">
 					<h1 class="mb-3 mt-5 text-start">PET<p class="text-primary">SHOP <i class="fas fa-paw"></i></p></h1>
-					<p class="text-start">Petshop & Klinik Hewan PETSHOP didirikan dengan visi untuk menjadi penyedia layanan kesehatan hewan dan penitipan hewan peliharaan yang terpercaya dan profesional. Kami memahami betapa pentingnya hewan peliharaan bagi Anda, dan kami berkomitmen untuk memberikan perawatan terbaik dan lingkungan yang aman dan nyaman bagi sahabat bulu Anda.</p>
-					<div class="d-flex justify-content-center align-items-center mt-3">
-						<img src="<?php echo base_url('assets/assets/img/icon-instagram.png'); ?>" class="list-img me-2" alt="Instagram">
-						<img src="<?php echo base_url('assets/assets/img/icon-facebook.png'); ?>" class="list-img me-2" alt="Facebook">
-						<img src="<?php echo base_url('assets/assets/img/icon-gmail.png'); ?>" class="list-img me-2" alt="Gmail">
-						<img src="<?php echo base_url('assets/assets/img/icon-telegram.png'); ?>" class="list-img me-2" alt="Telegram">
-						<img src="<?php echo base_url('assets/assets/img/icon-twiter.png'); ?>" class="list-img me-2" alt="Twitter">
-					</div>
+					<p class="text-start">Petshop & Klinik Hewan PETSHOP didirikan dengan visi untuk menjadi penyedia layanan kesehatan hewan dan penitipan hewan peliharaan yang terpercaya dan profesional. Kami memahami betapa pentingnya hewan peliharaan bagi Anda, dan kami berkomitmen untuk memberikan perawatan terbaik dan lingkungan yang aman dan nyaman bagi sahabat bulu Anda.</p>					
 				</div>
 			</div>
 		</div>
@@ -141,7 +138,7 @@
 				<div class="col-md-5 mb-4">
 					<div class="d-flex">
 						<img src="<?php echo base_url('assets/assets/img/icon-home.png'); ?>" class="icon-service me-3" alt="Penitipan hewan">
-						<div>
+						<div class="ml-3">
 							<h5>Penitipan hewan</h5>
 							<p>Kami menawarkan layanan penitipan hewan dengan fasilitas yang lengkap dan nyaman. Hewan peliharaan Anda akan mendapatkan tempat tinggal yang bersih, area bermain yang luas, serta perawatan rutin seperti pemberian makan dan minum.</p>
 						</div>
@@ -151,7 +148,7 @@
 				<div class="col-md-5 mb-4">
 					<div class="d-flex">
 						<img src="<?php echo base_url('assets/assets/img/icon-tryning.png'); ?>" class="icon-service me-3" alt="Penitipan hewan">
-						<div>
+						<div class="ml-3">
 							<h5>Pelatihan hewan</h5>
 							<p>Kami menyediakan layanan pelatihan hewan untuk membantu Anda melatih hewan peliharaan Anda dengan cara yang positif dan efektif.</p>
 						</div>
@@ -163,7 +160,7 @@
 				<div class="col-md-5 mb-4">
 					<div class="d-flex">
 					<img src="<?php echo base_url('assets/assets/img/icon-klinik.png'); ?>" class="icon-service me-3" alt="Penitipan hewan">
-						<div>
+						<div class="ml-3">
 							<h5>Klinik hewan</h5>
 							<p>kami menyediakan berbagai macam layanan kesehatan hewan, mulai dari pemeriksaan kesehatan rutin, vaksinasi, pengobatan penyakit, hingga prosedur bedah minor.</p>
 						</div>
@@ -173,7 +170,7 @@
 				<div class="col-md-5 mb-4">
 					<div class="d-flex">
 						<img src="<?php echo base_url('assets/assets/img/icon-groming.png'); ?>" class="icon-service me-3" alt="Penitipan hewan">
-						<div>
+						<div class="ml-3">
 							<h5>Salon hewan</h5>
 							<p>Kami menawarkan layanan grooming untuk menjaga kebersihan dan kesehatan bulu serta kulit hewan peliharaan Anda.</p>
 						</div>
@@ -182,6 +179,8 @@
 			</div>
 		</div>
 <!-- END PAGE 2 -->
+
+	<?php $this->load->view("customer/layouts/_footer"); ?>
 
 	</div>
 	<script src="assets/js/scriptsjs"></script>
