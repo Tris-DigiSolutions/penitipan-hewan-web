@@ -66,9 +66,13 @@
                                                 <th>Check-out</th>
                                                 <td><?= $grooming["date_finished"] ?></td>
                                             </tr>
+                                            <tr>
+                                                <th>Notes</th>
+                                                <td><?= $grooming["notes"] ?></td>
+                                            </tr>
                                         </table>
                                         <!-- <button id="pay-button" class="btn btn-success">Bayar</button> -->
-                                        <a href="<?= base_url() ?>grooming/payment/<?= $grooming['order_id'] ?>" class="btn btn-success">Bayar</a>
+                                        <button id="pay-button" class="btn btn-success">Bayar</button>
                                         <button id="cancel-button" class="btn btn-danger">Cancel</button>
                                     </div>
                                 </div>

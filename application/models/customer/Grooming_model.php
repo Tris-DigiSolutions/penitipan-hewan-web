@@ -36,6 +36,12 @@ class Grooming_model extends CI_Model
         $this->db->insert('groomings', $groomingData);
     }
 
+    public function updateGroomingWithOrderId($grooming_id, $order_id)
+    {
+        $this->db->where('grooming_id', $grooming_id);
+        $this->db->update('groomings', ['order_id' => $order_id]);
+    }
+
     private function getCustomerId($customerName, $customerPhone)
     {
         $this->db->where('customer_name', $customerName);

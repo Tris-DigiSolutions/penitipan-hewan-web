@@ -28,7 +28,6 @@ class Grooming extends CI_Controller
 		$data["packages"] = $this->Grooming_model->getAllPackages();
 
 		$this->_groomingValidation();
-
 		if ($this->form_validation->run() == FALSE) {
 			$this->load->view("customer/groomings/registration_view", $data);
 		} else {
@@ -52,8 +51,6 @@ class Grooming extends CI_Controller
 
 		$tarif = $petType == "Kucing" ? $package["cost_for_cat"] : $package["cost_for_dog"];
 
-		$order_id = rand(); // Ideally, use a more robust method to generate unique order IDs
-
 		$data["grooming"] = [
 			"customer_name" => $customerName,
 			"customer_phone" => $customerPhone,
@@ -64,14 +61,12 @@ class Grooming extends CI_Controller
 			"tarif" => $tarif,
 			"notes" => $customerNotes,
 			"date_created" => $checkInDate,
-			"date_finished" => $checkOutDate,
-			"order_id" => $order_id, // Save the order ID
-			"transaction_status" => 'pending'
+			"date_finished" => $checkOutDate
 		];
 
 		// Midtrans payment
 		$transaction_details = array(
-			'order_id' => $order_id,
+			'order_id' => rand(),
 			'gross_amount' => $tarif,
 		);
 		$item_details = array(
@@ -96,66 +91,22 @@ class Grooming extends CI_Controller
 		$data['snapToken'] = $snapToken;
 
 		// Insert data into the database
-		$this->Grooming_model->registerGrooming($data['grooming']);
-		// Redirect to payment page with order_id as a parameter
-		redirect("grooming/payment/{$data['grooming']['order_id']}");
-	}
+		$groomingData = [
+			"customer_name" => $customerName,
+			"customer_phone" => $customerPhone,
+			"customer_address" => $customerAddress,
+			"pet_type" => $petType,
+			"grooming_status" => "Didaftarkan",
+			"package_id" => $packageId,
+			"customer_id" => $this->session->userdata("customer_id"),
+			"notes" => $customerNotes,
+			"date_created" => $checkInDate,
+			"date_finished" => $checkOutDate
+		];
 
-	public function notificationHandler()
-	{
-		$json_result = file_get_contents('php://input');
-		$result = json_decode($json_result, true);
-
-		if ($result) {
-			$order_id = $result['order_id'];
-			$transaction_status = $result['transaction_status'];
-			// $fraud_status = $result['fraud_status'];
-
-			// // Handle different transaction statuses
-			// if ($transaction_status == 'capture') {
-			// 	if ($fraud_status == 'accept') {
-			// 		$status = 'success';
-			// 	} else if ($fraud_status == 'challenge') {
-			// 		$status = 'challenge';
-			// 	} else {
-			// 		$status = 'deny';
-			// 	}
-			// } else if ($transaction_status == 'settlement') {
-			// 	$status = 'success';
-			// } else if ($transaction_status == 'pending') {
-			// 	$status = 'pending';
-			// } else if ($transaction_status == 'deny') {
-			// 	$status = 'deny';
-			// } else if ($transaction_status == 'expire') {
-			// 	$status = 'expire';
-			// } else if ($transaction_status == 'cancel') {
-			// 	$status = 'cancel';
-			// }
-
-			// Update transaction status in the database
-			$this->Grooming_model->updateTransactionStatus($order_id, $transaction_status);
-
-			// Respond with 200 OK
-			http_response_code(200);
-		}
-	}
-
-	public function paymentSuccess()
-	{
-		$order_id = $this->session->flashdata('order_id');
-		redirect('customer/grooming/detailGrooming/' . $order_id);
-	}
-
-	public function paymentPending()
-	{
-		$order_id = $this->session->flashdata('order_id');
-		redirect('customer/grooming/detailGrooming/' . $order_id);
-	}
-
-	public function paymentError()
-	{
-		// Handle error page here
-		$this->load->view('customer/groomings/error_view');
+		$this->Grooming_model->registerGrooming($groomingData);
+		$this->session->set_flashdata('message', 'Didaftarkan');
+		$this->load->view("customer/groomings/konfirmasi_view", $data);
 	}
 
 	public function detailGrooming($id)
@@ -176,10 +127,9 @@ class Grooming extends CI_Controller
 	private function _groomingValidation()
 	{
 		$this->form_validation->set_rules("customer_name", "Nama Customer", "required");
-		$this->form_validation->set_rules("customer_phone", "Phone Customer", "required|numeric");
+		$this->form_validation->set_rules("customer_phone", "Phone Customer", "required");
 		$this->form_validation->set_rules("customer_address", "Alamat Customer", "required");
 		$this->form_validation->set_rules("pet_type", "Tipe Peliharaan", "required");
-		$this->form_validation->set_rules("package_id", "Paket", "required");
 		$this->form_validation->set_rules("date_created", "Check-in", "required");
 		$this->form_validation->set_rules("date_finished", "Check-out", "required");
 	}
