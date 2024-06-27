@@ -10,7 +10,6 @@
 	<!-- Page Content -->
 
 	<!-- alert -->
-	<div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
 
 	<div class="container mt-3">
 
