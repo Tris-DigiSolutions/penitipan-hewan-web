@@ -31,9 +31,9 @@
 						</svg>Cara Booking</a>
 				</li>
 				<li class="nav-item align-self-center">
-					<a class="nav-link" href="#galleri" alt="Home" title="Galleri" style="display: flex;justify-content: center;align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512" style="margin-right: 3px;">
+					<a class="nav-link" href="about_page" alt="Home" title="Galleri" style="display: flex;justify-content: center;align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512" style="margin-right: 3px;">
 							<path fill="#ffffff" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
-						</svg>Galleri</a>
+						</svg>About</a>
 				</li>
 				<?php if ($this->session->userdata("logged_in") == "customer") : ?>
 					<li class="nav-item dropdown align-self-center">

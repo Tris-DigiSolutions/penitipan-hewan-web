@@ -27,8 +27,7 @@
 								<h2 class="font-weight-bold mb-2 text-primary">Layanan Penitipan Hewan Terpercaya dan
 									Nyaman
 								</h2>
-								<p class="text-">Tempat Terbaik ntuk Menitipkan Hewan
-									Kesayanganmu</p>
+								<p class="text-">Tempat Terbaik ntuk Menitipkan Hewan Kesayanganmu</p>
 								<div>
 									<a href="grooming/register"
 										class="btn btn-primary px-4 font-weight-bold text-white shadow text-uppercase mt-2">Booking
