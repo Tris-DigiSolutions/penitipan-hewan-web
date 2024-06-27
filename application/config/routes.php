@@ -23,6 +23,7 @@ $route['tambah-keranjang/(:num)'] = 'customer/cart/addtocart/$1';
 $route['hapus-keranjang/(:num)'] = 'customer/cart/removecartitem/$1';
 $route['kosongkan-keranjang'] = 'customer/cart/emptycart';
 // proses order
+// $route['snap'] = 'midtrans/snap';
 $route['proses-order'] = 'customer/cart/processorder';
 $route['checkout-success'] = 'customer/cart/checkoutsuccess';
 // lihat order
@@ -35,9 +36,10 @@ $route['kategori/(:num)'] = 'customer/category/productcategory/$1';
 $route['tentang-kami'] = 'main/aboutus';
 // groomings
 $route['grooming'] = 'customer/grooming';
-$route['grooming/register'] = 'customer/grooming/groomingregistration';
-$route['grooming/detail/(:num)'] = 'customer/grooming/detailgrooming/$1';
-$route['grooming/hapus/(:num)'] = 'customer/grooming/deletegroomingdata/$1';
+$route['grooming/register'] = 'customer/grooming/groomingRegistration';
+$route['grooming/konfirmasi'] = 'customer/grooming/konfirmasiGrooming';
+$route['grooming/detail/(:num)'] = 'customer/grooming/detailGrooming/$1';
+$route['grooming/hapus/(:num)'] = 'customer/grooming/deleteGroomingData/$1';
 // profiles
 $route['customer/profile'] = 'customer/profile';
 $route['customer/profile/update-profile'] = 'customer/profile/editprofile';

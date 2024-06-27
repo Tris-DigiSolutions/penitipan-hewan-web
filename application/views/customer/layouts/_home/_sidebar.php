@@ -13,7 +13,7 @@
 
 	<!-- Nav Item - Dashboard -->
 	<li class="nav-item active">
-		<a class="nav-link" href="<?= base_url("/") ?>">
+		<a class="nav-link" href="<?= base_url("home") ?>">
 			<i class="fas fa-fw fa-home"></i>
 			<span>Home</span></a>
 	</li>
