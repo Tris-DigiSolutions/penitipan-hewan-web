@@ -10,7 +10,7 @@
 	<!-- Page Content -->
 
 	<!-- alert -->
-	<div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
+	<!-- <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div> -->
 
 	<div class="container mt-3">
 
@@ -80,7 +80,7 @@
 						</div>
 					</div>
 					<!-- End of Galleri -->
-					<div class="container border-bottom py-5">
+					<div class="container border-bottom py-5" id="features">
 						<h2 class="pb-2 text-primary text-center mb-5 mt-5">Fitur Utama</h2>
 						<div class="row">
 							<div class="col-lg-4 text-center">
