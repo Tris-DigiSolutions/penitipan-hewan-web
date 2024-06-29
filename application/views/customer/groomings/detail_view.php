@@ -33,6 +33,8 @@
                     <!-- end alert flashdata -->
                     <div class="card" style="border-radius: 20px; background-color: #EDEADE;">
                         <div class="card-body">
+                            <b>Order ID</b>
+                            <p><?= $grooming["order_id"]; ?></p>
                             <b>Nama Customer</b>
                             <p><?= $grooming["customer_name"]; ?></p>
                             <b>Nomor Ponsel Customer</b>
