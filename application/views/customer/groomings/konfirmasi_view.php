@@ -28,6 +28,11 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800"><?= $page_title ?></h1>
 
+                    <form id="payment-form" method="post" action="<?= base_url("customer/grooming/konfirmasiGrooming") ?>">
+                        <input type="hidden" name="result_type" id="result-type" value="">
+                        <input type="hidden" name="result_data" id="result-data" value="">
+                    </form>
+
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card mb-4">
@@ -36,39 +41,39 @@
                                         <table class="table table-bordered">
                                             <tr>
                                                 <th>Nama Customer</th>
-                                                <td><?= $grooming["customer_name"] ?></td>
+                                                <td id="customer_name"><?= $grooming["customer_name"] ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Phone Customer</th>
-                                                <td><?= $grooming["customer_phone"] ?></td>
+                                                <td id="customer_phone"><?= $grooming["customer_phone"] ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Alamat Customer</th>
-                                                <td><?= $grooming["customer_address"] ?></td>
+                                                <td id="customer_address"><?= $grooming["customer_address"] ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Pet Type</th>
-                                                <td><?= $grooming["pet_type"] ?></td>
+                                                <td id="pet_type"><?= $grooming["pet_type"] ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Package</th>
-                                                <td><?= $grooming["package_name"] ?></td>
+                                                <td id="package"><?= $grooming["package_name"] ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Tarif</th>
-                                                <td><?= $grooming["tarif"] ?></td>
+                                                <td id="tarif">Rp<?= number_format($grooming["tarif"], '0', '', '.') ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Check-in</th>
-                                                <td><?= $grooming["date_created"] ?></td>
+                                                <td id="check_in"><?= $grooming["date_created"] ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Check-out</th>
-                                                <td><?= $grooming["date_finished"] ?></td>
+                                                <td id="check_out"><?= $grooming["date_finished"] ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Notes</th>
-                                                <td><?= $grooming["notes"] ?></td>
+                                                <td id="notes"><?= $grooming["notes"] ?></td>
                                             </tr>
                                         </table>
                                         <!-- <button id="pay-button" class="btn btn-success">Bayar</button> -->
@@ -112,39 +117,32 @@
         payButton.addEventListener('click', function() {
             snap.pay('<?= $snapToken ?>', {
                 onSuccess: function(result) {
+                    /* You may add your own implementation here */
+                    Swal.fire({
+                        title: 'Payment Success!',
+                        text: 'Your payment has been processed successfully!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        window.location.href = "<?= base_url('grooming') ?>";
+                    });
                     console.log(result);
-                    window.location.href = "<?= base_url() ?>grooming/paymentSuccess";
                 },
                 onPending: function(result) {
+                    /* You may add your own implementation here */
+                    alert("wating your payment!");
                     console.log(result);
-                    window.location.href = "<?= base_url() ?>grooming/paymentPending";
                 },
                 onError: function(result) {
+                    /* You may add your own implementation here */
+                    alert("payment failed!");
                     console.log(result);
-                    window.location.href = "<?= base_url() ?>grooming/paymentError";
                 },
                 onClose: function() {
-                    console.log('customer closed the popup without finishing the payment');
+                    /* You may add your own implementation here */
+                    alert('you closed the popup without finishing the payment');
                 }
             })
-        });
-
-        var cancelButton = document.getElementById('cancel-button');
-        cancelButton.addEventListener('click', function(event) {
-            event.preventDefault();
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, cancel it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = "<?= base_url() ?>";
-                }
-            });
         });
     </script>
 

@@ -44,8 +44,8 @@ class Grooming_model extends CI_Model
 
     private function getCustomerId($customerName, $customerPhone)
     {
-        $this->db->where('customer_name', $customerName);
-        $this->db->where('customer_phone', $customerPhone);
+        $this->db->where('name', $customerName);
+        $this->db->where('phone', $customerPhone);
         $customer = $this->db->get('customers')->row_array();
 
         return $customer ? $customer['customer_id'] : null;
