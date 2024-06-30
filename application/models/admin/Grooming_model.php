@@ -31,4 +31,24 @@ class Grooming_model extends CI_Model
 		$this->db->where("grooming_id", $id);
 		$this->db->delete("groomings");
 	}
+	// Fungsi untuk mendapatkan kuota saat ini
+	public function getKuota()
+	{
+		$query = $this->db->get('kuota_pet_boarding');
+		return $query->row();
+	}
+
+	// Fungsi untuk memperbarui kuota
+	public function updateKuota($kuota)
+	{
+		$data = array('kuota' => $kuota);
+		return $this->db->update('kuota_pet_boarding', $data);
+	}
+
+	// Fungsi untuk mengurangi kuota setelah pendaftaran berhasil
+	public function decreaseKuota()
+	{
+		$this->db->set('kuota', 'kuota-1', FALSE);
+		return $this->db->update('kuota_pet_boarding');
+	}
 }

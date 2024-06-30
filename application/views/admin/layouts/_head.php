@@ -22,4 +22,9 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="<?= base_url("assets/admin/css/style.css") ?>">
     <link rel="stylesheet" href="<?= base_url("assets/admin/css/components.css") ?>">
+
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>

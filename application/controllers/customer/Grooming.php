@@ -6,6 +6,7 @@ class Grooming extends CI_Controller
 		parent::__construct();
 		$this->load->library('form_validation');
 		$this->load->model('customer/Grooming_model', 'Grooming_model');
+		// $this->load->model('admin/Grooming_model', 'adminGrooming_model');
 		$this->load->model('customer/Payment_model', 'Payment_model');
 		if ($this->session->userdata("logged_in") !== "customer") {
 			redirect("login");
@@ -28,11 +29,17 @@ class Grooming extends CI_Controller
 		$data["page_title"] = "Registrasi Pet Boarding Service";
 		$data["packages"] = $this->Grooming_model->getAllPackages();
 
-		$this->_groomingValidation();
-		if ($this->form_validation->run() == FALSE) {
-			$this->load->view("customer/groomings/registration_view", $data);
+		$kuota = $this->Grooming_model->getKuota();
+		if ($kuota->kuota <= 0) {
+			$data['message'] = 'Kuota Pet Boarding penuh';
+			redirect('landing', $data);
 		} else {
-			$this->konfirmasiGrooming();
+			$this->_groomingValidation();
+			if ($this->form_validation->run() == FALSE) {
+				$this->load->view("customer/groomings/registration_view", $data);
+			} else {
+				$this->konfirmasiGrooming();
+			}
 		}
 	}
 
@@ -136,6 +143,7 @@ class Grooming extends CI_Controller
 			// "pdf_url" => $payment_result["pdf_url"],
 		];
 
+		$this->Grooming_model->decreaseKuota();
 		$this->Grooming_model->registerGrooming($groomingData);
 		$this->session->set_flashdata('message', 'Didaftarkan');
 		$this->load->view("customer/groomings/konfirmasi_view", $data);

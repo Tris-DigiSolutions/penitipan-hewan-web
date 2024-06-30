@@ -21,6 +21,18 @@ class Grooming_model extends CI_Model
         return $this->db->get()->result_array();
     }
 
+    public function getKuota()
+    {
+        $query = $this->db->get('kuota_pet_boarding');
+        return $query->row();
+    }
+
+    public function decreaseKuota()
+    {
+        $this->db->set('kuota', 'kuota-1', FALSE);
+        return $this->db->update('kuota_pet_boarding');
+    }
+
     public function registerGrooming($groomingData)
     {
         // Check if the customer record exists
