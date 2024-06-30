@@ -6,7 +6,9 @@
 	<meta name="author" content="">
 
 
-	<title>PetShop - <?= $page_title; ?></title>
+	<title>PetShop -
+		<?= $page_title; ?>
+	</title>
 
 	<!-- Fav Icon -->
 	<link rel="shortcut icon" href="<?= base_url("assets/customer/img/pet-pet.png") ?>" type="image/x-icon">
@@ -24,8 +26,79 @@
 	<link href="<?= base_url("assets/customer/css/shop-homepage.css") ?>" rel="stylesheet">
 
 	<!-- Font awesome -->
-	<link href="<?= base_url("assets/customer/vendor/fontawesome-free/css/all.min.css") ?>" rel="stylesheet" type="text/css">
+	<link href="<?= base_url("assets/customer/vendor/fontawesome-free/css/all.min.css") ?>" rel="stylesheet"
+		type="text/css">
 
 	<link rel="stylesheet" href="<?= base_url("assets/admin/modules/summernote/summernote-bs4.css") ?>">
+	<style>
+		.landing-page .img-landing {
+			max-width: 500px;
+			max-height: 500px;
+		}
 
+		.list-img {
+			max-width: 30px;
+			max-height: 30px;
+		}
+
+		.icon-service {
+			max-width: 70px;
+			max-height: 70px;
+		}
+
+		.vision-mission {
+			padding: 100px 0;
+			background-color: #f8f9fa;
+			color: #333;
+		}
+
+		.vision-mission h1 {
+			font-size: 48px;
+			font-weight: bold;
+		}
+
+		.vision-mission p {
+			font-size: 20px;
+			line-height: 1.6;
+			margin-top: 30px;
+		}
+
+		.content {
+			padding: 50px 0;
+		}
+
+		.content h2 {
+			font-size: 36px;
+			font-weight: bold;
+			margin-bottom: 30px;
+		}
+
+		.content ul {
+			padding-left: 20px;
+			list-style-type: none;
+		}
+
+		.content ul li {
+			font-size: 18px;
+			margin-bottom: 15px;
+			position: relative;
+		}
+
+		.content ul li:before {
+			content: "\2022";
+			color: #007bff;
+			font-size: 24px;
+			position: absolute;
+			left: -20px;
+			top: 6px;
+		}
+
+		.img-padding {
+			padding: 5px;
+		}
+
+		.h5-padding {
+			padding: 5px;
+		}
+	</style>
 </head>
