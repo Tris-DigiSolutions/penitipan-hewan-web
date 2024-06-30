@@ -38,6 +38,9 @@ $route['tentang-kami'] = 'main/aboutus';
 $route['grooming'] = 'customer/grooming';
 $route['grooming/register'] = 'customer/grooming/groomingRegistration';
 $route['grooming/konfirmasi'] = 'customer/grooming/konfirmasiGrooming';
+$route['grooming/payment-success'] = 'customer/grooming/paymentSuccess';
+$route['grooming/payment-pending'] = 'customer/grooming/paymentPending';
+$route['grooming/payment-error'] = 'customer/grooming/paymentError';
 $route['grooming/detail/(:num)'] = 'customer/grooming/detailGrooming/$1';
 $route['grooming/hapus/(:num)'] = 'customer/grooming/deleteGroomingData/$1';
 // profiles

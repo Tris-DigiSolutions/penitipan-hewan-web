@@ -6,6 +6,7 @@ class Grooming extends CI_Controller
 		parent::__construct();
 		$this->load->library('form_validation');
 		$this->load->model('customer/Grooming_model', 'Grooming_model');
+		$this->load->model('customer/Payment_model', 'Payment_model');
 		if ($this->session->userdata("logged_in") !== "customer") {
 			redirect("login");
 		}
@@ -28,7 +29,6 @@ class Grooming extends CI_Controller
 		$data["packages"] = $this->Grooming_model->getAllPackages();
 
 		$this->_groomingValidation();
-
 		if ($this->form_validation->run() == FALSE) {
 			$this->load->view("customer/groomings/registration_view", $data);
 		} else {
@@ -52,8 +52,6 @@ class Grooming extends CI_Controller
 
 		$tarif = $petType == "Kucing" ? $package["cost_for_cat"] : $package["cost_for_dog"];
 
-		$order_id = rand(); // Ideally, use a more robust method to generate unique order IDs
-
 		$data["grooming"] = [
 			"customer_name" => $customerName,
 			"customer_phone" => $customerPhone,
@@ -65,98 +63,146 @@ class Grooming extends CI_Controller
 			"notes" => $customerNotes,
 			"date_created" => $checkInDate,
 			"date_finished" => $checkOutDate,
-			"order_id" => $order_id, // Save the order ID
-			"transaction_status" => 'pending'
 		];
 
 		// Midtrans payment
 		$transaction_details = array(
-			'order_id' => $order_id,
+			'order_id' => rand(),
 			'gross_amount' => $tarif,
 		);
 		$item_details = array(
 			array(
 				'id' => $packageId,
 				'price' => $tarif,
+				// "pet_type" => $petType,
+				// "notes" => $customerNotes,
 				'quantity' => 1,
 				'name' => $package["name"]
 			),
 		);
 		$customer_details = array(
-			'first_name' => $customerName,
+			'name' => $customerName,
 			'phone' => $customerPhone,
 			'address' => $customerAddress
 		);
-		$transaction = array(
-			'transaction_details' => $transaction_details,
-			'customer_details' => $customer_details,
-			'item_details' => $item_details,
+		$time = time();
+		$custom_expiry = array(
+			'start_time' => date("Y-m-d H:i:s O", $time),
+			'unit' => 'day',
+			'duration'  => 1
 		);
-		$snapToken = $this->midtrans->getSnapToken($transaction);
+		$transaction_data = array(
+			// 'data' => $data,
+			'transaction_details' => $transaction_details,
+			'item_details'       => $item_details,
+			'customer_details'   => $customer_details,
+			// 'credit_card'        => $credit_card,
+			'expiry'             => $custom_expiry
+		);
+		// error_log(json_encode($transaction_data));
+		// $snapToken = $this->midtrans->getSnapToken($transaction_data);
+		// error_log($snapToken);
+		// echo $snapToken;
+		$snapToken = $this->midtrans->getSnapToken($transaction_data);
 		$data['snapToken'] = $snapToken;
 
-		// Insert data into the database
-		$this->Grooming_model->registerGrooming($data['grooming']);
-		// Redirect to payment page with order_id as a parameter
-		redirect("grooming/payment/{$data['grooming']['order_id']}");
+		// Terima dan decode data JSON dari request body
+		// $result = json_decode($this->input->post('result_data'), true);
+
+		// echo "<pre>";
+		// var_dump($result);
+		// echo "</pre>";
+		// die;
+
+		// // Insert data into the database
+
+		$groomingData = [
+			"order_id" => $transaction_details['order_id'],
+			"customer_name" => $customerName,
+			"customer_phone" => $customerPhone,
+			"customer_address" => $customerAddress,
+			"pet_type" => $petType,
+			"package_id" => $packageId,
+			"customer_id" => $this->session->userdata("customer_id"),
+			"notes" => $customerNotes,
+			"date_created" => $checkInDate,
+			"date_finished" => $checkOutDate,
+			// "status_code" => $result["status_code"],
+			// "payment_type" => $payment_result["payment_type"],
+			// "bank" => $payment_result["bank"],
+			// "va_number" => $payment_result['va_numbers'][0]['va_number'],
+			// "transaction_time" => $payment_result["transaction_time"],
+			"grooming_status" => "Didaftarkan",
+			// "pdf_url" => $payment_result["pdf_url"],
+		];
+
+		$this->Grooming_model->registerGrooming($groomingData);
+		$this->session->set_flashdata('message', 'Didaftarkan');
+		$this->load->view("customer/groomings/konfirmasi_view", $data);
 	}
 
-	public function notificationHandler()
-	{
-		$json_result = file_get_contents('php://input');
-		$result = json_decode($json_result, true);
+	// public function finishPayment()
+	// {
+	// 	$result = json_decode($this->input->post('result_data'), true);
+	// 	echo "<pre>";
+	// 	var_dump($result);
+	// 	echo "</pre>";
+	// 	die;
+	// }
 
-		if ($result) {
-			$order_id = $result['order_id'];
-			$transaction_status = $result['transaction_status'];
-			// $fraud_status = $result['fraud_status'];
+	// public function savePayment()
+	// {
+	// 	$payment_result = $this->input->post('payment_result');
 
-			// // Handle different transaction statuses
-			// if ($transaction_status == 'capture') {
-			// 	if ($fraud_status == 'accept') {
-			// 		$status = 'success';
-			// 	} else if ($fraud_status == 'challenge') {
-			// 		$status = 'challenge';
-			// 	} else {
-			// 		$status = 'deny';
-			// 	}
-			// } else if ($transaction_status == 'settlement') {
-			// 	$status = 'success';
-			// } else if ($transaction_status == 'pending') {
-			// 	$status = 'pending';
-			// } else if ($transaction_status == 'deny') {
-			// 	$status = 'deny';
-			// } else if ($transaction_status == 'expire') {
-			// 	$status = 'expire';
-			// } else if ($transaction_status == 'cancel') {
-			// 	$status = 'cancel';
-			// }
+	// 	// Simpan data hasil pembayaran ke database
+	// 	$data = array(
+	// 		'transaction_id' => $payment_result['transaction_id'],
+	// 		'order_id' => $payment_result['order_id'],
+	// 		'gross_amount' => $payment_result['gross_amount'],
+	// 		'payment_type' => $payment_result['payment_type'],
+	// 		'transaction_time' => $payment_result['transaction_time'],
+	// 		'transaction_status' => $payment_result['transaction_status'],
+	// 		// Tambahkan data lain yang diperlukan dari $payment_result
+	// 	);
 
-			// Update transaction status in the database
-			$this->Grooming_model->updateTransactionStatus($order_id, $transaction_status);
+	// 	$this->Payment_model->insert_payment($data);
 
-			// Respond with 200 OK
-			http_response_code(200);
-		}
-	}
+	// 	echo json_encode(array('status' => 'success'));
+	// }
 
-	public function paymentSuccess()
-	{
-		$order_id = $this->session->flashdata('order_id');
-		redirect('customer/grooming/detailGrooming/' . $order_id);
-	}
+	// public function paymentSuccess()
+	// {
+	// 	// $order_id = $this->session->flashdata('order_id');
+	// 	redirect($this->detailGrooming);
+	// }
 
-	public function paymentPending()
-	{
-		$order_id = $this->session->flashdata('order_id');
-		redirect('customer/grooming/detailGrooming/' . $order_id);
-	}
+	// public function paymentPending()
+	// {
+	// 	$order_id = $this->session->flashdata('order_id');
+	// 	redirect($this->detailGrooming($order_id));
+	// }
 
-	public function paymentError()
-	{
-		// Handle error page here
-		$this->load->view('customer/groomings/error_view');
-	}
+	// public function paymentError()
+	// {
+	// 	// Handle error page here
+	// 	$this->load->view('customer/groomings/error_view');
+	// }
+
+	// public function detailGrooming($id = null)
+	// {
+	// 	if ($id === null) {
+	// 		show_404(); // Tampilkan halaman 404 jika id tidak diberikan
+	// 	}
+
+	// 	$data["page_title"] = "Detail Status Pet Boarding Service";
+	// 	$data["grooming"] = $this->Grooming_model->getGroomingById($id);
+
+	// 	if (!$data["grooming"]) {
+	// 		show_404(); // Tampilkan halaman 404 jika data grooming tidak ditemukan
+	// 	}
+
+	// 	$this->load->view("customer/groomings/detail_view", $data);
+	// }
 
 	public function detailGrooming($id)
 	{
@@ -176,10 +222,9 @@ class Grooming extends CI_Controller
 	private function _groomingValidation()
 	{
 		$this->form_validation->set_rules("customer_name", "Nama Customer", "required");
-		$this->form_validation->set_rules("customer_phone", "Phone Customer", "required|numeric");
+		$this->form_validation->set_rules("customer_phone", "Phone Customer", "required");
 		$this->form_validation->set_rules("customer_address", "Alamat Customer", "required");
 		$this->form_validation->set_rules("pet_type", "Tipe Peliharaan", "required");
-		$this->form_validation->set_rules("package_id", "Paket", "required");
 		$this->form_validation->set_rules("date_created", "Check-in", "required");
 		$this->form_validation->set_rules("date_finished", "Check-out", "required");
 	}
