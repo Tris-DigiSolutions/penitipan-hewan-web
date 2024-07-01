@@ -19,7 +19,7 @@ class Dashboard_model extends CI_Model
 
 	public function countAllOrders()
 	{
-		return $this->db->get("orders")->num_rows();
+		return $this->db->get("groomings")->num_rows();
 	}
 	public function countKuota()
 	{

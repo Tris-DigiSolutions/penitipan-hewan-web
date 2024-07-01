@@ -51,6 +51,8 @@
                                     IDR. <?= number_format($grooming["cost_for_dog"]) ?>
                                 <?php endif; ?>
                             </p>
+                            <b>Metode Pembayaran</b>
+                            <p><?= $grooming["payment_type"] ?></p>
                             <b>Status Transaksi</b>
                             <p>
                                 <?php if ($grooming["status_code"] == 200) : ?>
