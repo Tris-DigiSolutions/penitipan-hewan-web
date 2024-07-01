@@ -13,6 +13,7 @@ $route['login'] = 'customer/auth';
 $route['register'] = 'customer/auth/register';
 $route['logout'] = 'customer/auth/logout';
 // home
+$route['landing'] = 'Landing';
 $route['home'] = 'customer/home';
 // product
 $route['produk'] = 'customer/product';
@@ -86,6 +87,7 @@ $route['kelola-produk/hapus/(:num)'] = 'admin/product/delete/$1';
 $route['kelola-produk/detail/(:num)'] = 'admin/product/detail/$1';
 // Kelola paket grooming
 $route['paket-grooming'] = 'admin/package';
+$route['kuota-boarding'] = 'admin/grooming/changeKuota';
 $route['paket-grooming/ajaxlist'] = 'admin/package/ajaxlist';
 $route['paket-grooming/ajaxedit/(:num)'] = 'admin/package/ajaxedit/$1';
 $route['paket-grooming/ajaxadd'] = 'admin/package/ajaxadd';

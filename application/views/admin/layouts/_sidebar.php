@@ -27,6 +27,7 @@
 				<a href="#" class="nav-link has-dropdown"><i class="fas fa-cat"></i> <span>Kelola Pet Boarding</span></a>
 				<ul class="dropdown-menu">
 					<li><a href="<?= base_url("paket-grooming") ?>">Kelola Paket</a></li>
+					<li><a href="<?= base_url("kuota-boarding") ?>">Kelola Kuota</a></li>
 					<li><a class="nav-link" href="<?= base_url("kelola-grooming") ?>">Data Pet Boarding</a></li>
 				</ul>
 			</li>

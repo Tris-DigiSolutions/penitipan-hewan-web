@@ -37,6 +37,21 @@ class Grooming extends CI_Controller
 		}
 	}
 
+	public function changeKuota()
+	{
+		$data["page_title"] = "Ubah Kuota Pet Boarding";
+
+		$this->form_validation->set_rules("kuota", "Kuota Pet Boarding", 'required');
+		if ($this->form_validation->run() == FALSE) {
+			$this->load->view("admin/groomings/changekuota_view", $data);
+		} else {
+			$kuota = $this->input->post("kuota");
+			$this->Grooming_model->updateKuota($kuota);
+			$this->session->set_flashdata('message', 'Kuota berhasil diubah');
+			redirect("kuota-boarding");
+		}
+	}
+
 	public function detail($id)
 	{
 		$data["page_title"] = "Detail Data Pet Boarding";
