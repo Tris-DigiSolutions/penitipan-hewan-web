@@ -51,6 +51,16 @@
                                     IDR. <?= number_format($grooming["cost_for_dog"]) ?>
                                 <?php endif; ?>
                             </p>
+                            <b>Status Transaksi</b>
+                            <p>
+                                <?php if ($grooming["status_code"] == 200) : ?>
+                                    <span class="badge badge-success">Success</span>
+                                <?php elseif ($grooming["status_code"] == 201) : ?>
+                                    <span class="badge badge-warning">Pending</span>
+                                <?php else : ?>
+                                    <span class="badge badge-danger">Denied</span>
+                                <?php endif; ?>
+                            </p>
                             <b>Status Pet Boarding Service</b>
                             <p>
                                 <?php if ($grooming["grooming_status"] == "Didaftarkan") : ?>
