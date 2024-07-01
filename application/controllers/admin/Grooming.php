@@ -40,6 +40,7 @@ class Grooming extends CI_Controller
 	public function changeKuota()
 	{
 		$data["page_title"] = "Ubah Kuota Pet Boarding";
+		$data["total_kuota"] = $this->Grooming_model->getKuota();
 
 		$this->form_validation->set_rules("kuota", "Kuota Pet Boarding", 'required');
 		if ($this->form_validation->run() == FALSE) {

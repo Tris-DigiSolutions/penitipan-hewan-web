@@ -31,7 +31,7 @@
                                     <form action="<?= base_url("admin/grooming/changeKuota") ?>" method="post">
                                         <div class="form-group">
                                             <label for="kuota">Kuota Pet Boarding:</label>
-                                            <input class="form-control" type="number" id="kuota" name="kuota" value="<?= set_value('kuota'); ?>" required>
+                                            <input class="form-control" type="number" id="kuota" name="kuota" placeholder="<?= $total_kuota; ?>" required>
                                         </div>
                                         <button class="btn btn-primary mt-3" type="submit">Ubah Kuota</button>
                                     </form>

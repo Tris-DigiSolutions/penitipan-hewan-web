@@ -60,6 +60,19 @@
 								</div>
 							</div>
 						</div>
+						<div class="col-lg-3 col-md-6 mb-4">
+							<div class="card border-left-danger shadow h-80 py-2 bg-warning">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div class="text-md font-weight-bold text-white text-uppercase mb-1">Kuota Pet Boarding</div>
+											<div class="h1 mb-0 font-weight-bold text-white"><?= $total_kuota; ?></div>
+										</div>
+										<div><i class="fas fa-credit-card"></i></div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</section>
 			</div>

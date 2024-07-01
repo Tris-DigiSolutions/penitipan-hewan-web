@@ -35,7 +35,7 @@ class Grooming_model extends CI_Model
 	public function getKuota()
 	{
 		$query = $this->db->get('kuota_pet_boarding');
-		return $query->row();
+		return $query->row()->kuota;
 	}
 
 	// Fungsi untuk memperbarui kuota

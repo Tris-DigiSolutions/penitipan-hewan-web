@@ -21,4 +21,15 @@ class Dashboard_model extends CI_Model
 	{
 		return $this->db->get("orders")->num_rows();
 	}
+	public function countKuota()
+	{
+		// $this->db->select('kuota');
+		$query = $this->db->get('kuota_pet_boarding');
+		return $query->row()->kuota;
+		// if ($query->num_rows() > 0) {
+		// 	return $query->row()->kuota;
+		// } else {
+		// 	return null;
+		// }
+	}
 }

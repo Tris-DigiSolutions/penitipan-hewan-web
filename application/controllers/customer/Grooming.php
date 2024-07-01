@@ -35,76 +35,82 @@ class Grooming extends CI_Controller
 		$data["page_title"] = "Registrasi Pet Boarding Service";
 		$data["packages"] = $this->Grooming_model->getAllPackages();
 
-		$this->_groomingValidation();
-		if ($this->form_validation->run() == FALSE) {
-			$this->load->view("customer/groomings/registration_view", $data);
+		$kuota = $this->Grooming_model->getKuota();
+		if ($kuota->kuota <= 0) {
+			$this->session->set_flashdata('message', 'Kuota Pet Boarding penuh');
+			redirect('landing', $data);
 		} else {
-			$customerName = htmlspecialchars($this->input->post("customer_name", true));
-			$customerPhone = htmlspecialchars($this->input->post("customer_phone"));
-			$customerAddress = htmlspecialchars($this->input->post("customer_address"));
-			$petType = $this->input->post("pet_type");
-			$packageId = $this->input->post("package_id");
-			$customerNotes = htmlspecialchars($this->input->post("notes", true));
-			$checkInDate = $this->input->post("date_created");
-			$checkOutDate = $this->input->post("date_finished");
 
-			$package = $this->Grooming_model->getPackageById($packageId);
+			$this->_groomingValidation();
+			if ($this->form_validation->run() == FALSE) {
+				$this->load->view("customer/groomings/registration_view", $data);
+			} else {
+				$customerName = htmlspecialchars($this->input->post("customer_name", true));
+				$customerPhone = htmlspecialchars($this->input->post("customer_phone"));
+				$customerAddress = htmlspecialchars($this->input->post("customer_address"));
+				$petType = $this->input->post("pet_type");
+				$packageId = $this->input->post("package_id");
+				$customerNotes = htmlspecialchars($this->input->post("notes", true));
+				$checkInDate = $this->input->post("date_created");
+				$checkOutDate = $this->input->post("date_finished");
 
-			$tarif = $petType == "Kucing" ? $package["cost_for_cat"] : $package["cost_for_dog"];
+				$package = $this->Grooming_model->getPackageById($packageId);
 
-			$data["grooming"] = [
-				"customer_name" => $customerName,
-				"customer_phone" => $customerPhone,
-				"customer_address" => $customerAddress,
-				"pet_type" => $petType,
-				"package_id" => $packageId,
-				"package_name" => $package["name"],
-				"tarif" => $tarif,
-				"notes" => $customerNotes,
-				"date_created" => $checkInDate,
-				"date_finished" => $checkOutDate,
-			];
+				$tarif = $petType == "Kucing" ? $package["cost_for_cat"] : $package["cost_for_dog"];
 
-			// Midtrans payment
-			$transaction_details = array(
-				'order_id' => rand(),
-				'gross_amount' => $tarif,
-			);
-			$item_details = array(
-				array(
-					'id' => $packageId,
-					'price' => $tarif,
-					'name' => $package["name"],
-					'quantity' => 1
-				),
-			);
-			$customer_details = array(
-				'name' => $customerName,
-				'phone' => $customerPhone,
-				'address' => $customerAddress
-			);
-			$time = time();
-			$custom_expiry = array(
-				'start_time' => date("Y-m-d H:i:s O", $time),
-				'unit' => 'day',
-				'duration'  => 1
-			);
-			$transaction_data = array(
-				// 'data' => $data,
-				'transaction_details' => $transaction_details,
-				'item_details'       => $item_details,
-				'customer_details'   => $customer_details,
-				// 'credit_card'        => $credit_card,
-				'expiry'             => $custom_expiry
-			);
+				$data["grooming"] = [
+					"customer_name" => $customerName,
+					"customer_phone" => $customerPhone,
+					"customer_address" => $customerAddress,
+					"pet_type" => $petType,
+					"package_id" => $packageId,
+					"package_name" => $package["name"],
+					"tarif" => $tarif,
+					"notes" => $customerNotes,
+					"date_created" => $checkInDate,
+					"date_finished" => $checkOutDate,
+				];
 
-			error_log(json_encode($transaction_data));
-			$snapToken = $this->midtrans->getSnapToken($transaction_data);
-			$data['snapToken'] = $snapToken;
-			error_log($snapToken);
-			echo $snapToken;
+				// Midtrans payment
+				$transaction_details = array(
+					'order_id' => rand(),
+					'gross_amount' => $tarif,
+				);
+				$item_details = array(
+					array(
+						'id' => $packageId,
+						'price' => $tarif,
+						'name' => $package["name"],
+						'quantity' => 1
+					),
+				);
+				$customer_details = array(
+					'name' => $customerName,
+					'phone' => $customerPhone,
+					'address' => $customerAddress
+				);
+				$time = time();
+				$custom_expiry = array(
+					'start_time' => date("Y-m-d H:i:s O", $time),
+					'unit' => 'day',
+					'duration'  => 1
+				);
+				$transaction_data = array(
+					// 'data' => $data,
+					'transaction_details' => $transaction_details,
+					'item_details'       => $item_details,
+					'customer_details'   => $customer_details,
+					// 'credit_card'        => $credit_card,
+					'expiry'             => $custom_expiry
+				);
 
-			$this->load->view('customer/groomings/konfirmasi_view', $data);
+				error_log(json_encode($transaction_data));
+				$snapToken = $this->midtrans->getSnapToken($transaction_data);
+				$data['snapToken'] = $snapToken;
+				error_log($snapToken);
+
+				$this->load->view('customer/groomings/konfirmasi_view', $data);
+			}
 		}
 	}
 

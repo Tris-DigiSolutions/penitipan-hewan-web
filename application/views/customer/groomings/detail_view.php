@@ -61,6 +61,8 @@
                                     <span class="badge badge-danger">Denied</span>
                                 <?php endif; ?>
                             </p>
+                            <b>Waktu Transaksi</b>
+                            <p><?= $grooming["transaction_time"]; ?></p>
                             <b>Status Pet Boarding Service</b>
                             <p>
                                 <?php if ($grooming["grooming_status"] == "Didaftarkan") : ?>
