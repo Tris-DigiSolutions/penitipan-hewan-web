@@ -132,7 +132,21 @@
 		<?php $this->load->view("customer/layouts/_footer"); ?>
 
 	</div>
-	<script src="assets/js/scriptsjs"></script>
+	<!-- Footer -->
+	<?php $this->load->view("customer/layouts/_footer"); ?>
+
+	<?php $this->load->view("customer/layouts/_scripts"); ?>
+	<script src="assets/js/scriptsjs">
+		const flashData = $('.flash-data').data('flashdata');
+		if (flashData) {
+			Swal.fire({
+				title: 'Sorry',
+				text: flashData,
+				icon: 'warning',
+				confirmButtonText: 'OK'
+			});
+		}
+	</script>
 </body>
 
 </html>
