@@ -40,13 +40,15 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-8 mx-auto">
-                                            <form id="payment-form" method="post" action="<?= base_url("customer/grooming/finishPayment") ?>">
+                                            <form id="payment-form" method="post"
+                                                action="<?= base_url("customer/grooming/finishPayment") ?>">
                                                 <!-- alert kuota masih belom fix -->
                                                 <div class="alert alert-success d-none" role="alert" id="kuota ">
                                                     <i class="fas fa-check-circle"></i> Kuota Pet Boarding Tersedia
                                                 </div>
                                                 <div class="alert alert-danger d-none" role="alert" id="kuota">
-                                                    <i class="fas fa-times-circle"></i> Kuota Pet Boarding Tidak Tersedia
+                                                    <i class="fas fa-times-circle"></i> Kuota Pet Boarding Tidak
+                                                    Tersedia
                                                 </div>
                                                 <!-- end of alert kuota masih belom fix -->
 
@@ -54,45 +56,63 @@
                                                 <input type="hidden" name="result_data" id="result-data" value="">
 
                                                 <div class="form-group mt-5">
-                                                    <label for="customer_name"><i class="fas fa-user"></i> Nama Customer</label>
-                                                    <input type="text" id="customer_name" name="customer_name" class="form-control" value="<?= $grooming["customer_name"] ?>">
+                                                    <label for="customer_name"><i class="fas fa-user"></i> Nama
+                                                        Customer</label>
+                                                    <input type="text" id="customer_name" name="customer_name"
+                                                        class="form-control" value="<?= $grooming["customer_name"] ?>">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="customer_phone"><i class="fas fa-phone"></i> Nomor HP Customer</label>
-                                                    <input type="number" id="customer_phone" name="customer_phone" class="form-control " value="<?= $grooming["customer_phone"] ?>">
+                                                    <label for="customer_phone"><i class="fas fa-phone"></i> Nomor HP
+                                                        Customer</label>
+                                                    <input type="number" id="customer_phone" name="customer_phone"
+                                                        class="form-control "
+                                                        value="<?= $grooming["customer_phone"] ?>">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="customer_address"><i class="fas fa-map-marker-alt"></i> Alamat Customer</label>
-                                                    <textarea name="customer_address" id="customer_address" rows="3" class="form-control "><?= $grooming["customer_address"] ?></textarea>
+                                                    <label for="customer_address"><i class="fas fa-map-marker-alt"></i>
+                                                        Alamat Customer</label>
+                                                    <textarea name="customer_address" id="customer_address" rows="3"
+                                                        class="form-control "><?= $grooming["customer_address"] ?></textarea>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="pet_type"><i class="fas fa-paw"></i> Jenis Peliharaan</label>
-                                                    <input name="pet_type" id="pet_type" class="form-control" value="<?= $grooming["pet_type"] ?>">
+                                                    <label for="pet_type"><i class="fas fa-paw"></i> Jenis
+                                                        Peliharaan</label>
+                                                    <input name="pet_type" id="pet_type" class="form-control"
+                                                        value="<?= $grooming["pet_type"] ?>">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="package">Package</label>
-                                                    <input name="package" id="package" class="form-control" value="<?= $grooming["package_name"] ?>">
+                                                    <label for="package"><i class="fas fa-box"></i> Package</label>
+                                                    <input name="package" id="package" class="form-control"
+                                                        value="<?= $grooming["package_name"] ?>">
                                                 </div>
                                                 <div hidden class="form-group">
                                                     <label for="package_id">Package</label>
-                                                    <input name="package_id" id="package_id" class="form-control" value="<?= $grooming["package_id"] ?>">
+                                                    <input name="package_id" id="package_id" class="form-control"
+                                                        value="<?= $grooming["package_id"] ?>">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="tarif">Tarif</label>
-                                                    <input name="tarif" id="tarif" class="form-control" value="<?= number_format($grooming["tarif"], '0', '', '.') ?>">
+                                                    <label for="tarif"><i class="fas fa-dollar-sign"></i> Tarif</label>
+                                                    <input name="tarif" id="tarif" class="form-control"
+                                                        value="<?= number_format($grooming["tarif"], '0', '', '.') ?>">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="date_created"><i class="fas fa-calendar-alt"></i> Tanggal Check-in</label>
-                                                    <input id="date_created" name="date_created" class="form-control" value="<?= $grooming["date_created"] ?>">
+                                                    <label for="date_created"><i class="fas fa-calendar-alt"></i>
+                                                        Tanggal Check-in</label>
+                                                    <input id="date_created" name="date_created" class="form-control"
+                                                        value="<?= $grooming["date_created"] ?>">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="date_finished"><i class="fas fa-calendar-alt"></i> Tanggal Check-out</label>
-                                                    <input id="date_finished" name="date_finished" class="form-control" value="<?= $grooming["date_finished"] ?>">
+                                                    <label for="date_finished"><i class="fas fa-calendar-alt"></i>
+                                                        Tanggal Check-out</label>
+                                                    <input id="date_finished" name="date_finished" class="form-control"
+                                                        value="<?= $grooming["date_finished"] ?>">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="notes"><i class="fas fa-sticky-note"></i> Catatan Customer (Opsional)</label>
-                                                    <textarea name="notes" id="notes" rows="3" class="form-control"><?= $grooming["notes"] ?></textarea>
+                                                    <label for="notes"><i class="fas fa-sticky-note"></i> Catatan
+                                                        Customer (Opsional)</label>
+                                                    <textarea name="notes" id="notes" rows="3"
+                                                        class="form-control"><?= $grooming["notes"] ?></textarea>
                                                 </div>
 
                                                 <button id="pay-button" class="btn btn-success">Bayar</button>
@@ -126,11 +146,12 @@
             <?php $this->load->view("customer/layouts/_home/_scripts"); ?>
 
             <!-- Midtrans JavaScript -->
-            <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="<?= $this->config->item('midtrans_client_key') ?>"></script>
+            <script src="https://app.sandbox.midtrans.com/snap/snap.js"
+                data-client-key="<?= $this->config->item('midtrans_client_key') ?>"></script>
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
             <script type="text/javascript">
-                $('#pay-button').click(function(event) {
+                $('#pay-button').click(function (event) {
                     event.preventDefault();
                     $(this).attr("disabled", "disabled");
 
@@ -161,7 +182,7 @@
                         },
                         cache: false,
 
-                        success: function(data) {
+                        success: function (data) {
                             //location = data;
 
                             console.log('token = ' + data);
@@ -178,18 +199,18 @@
 
                             snap.pay('<?= $snapToken ?>', {
 
-                                onSuccess: function(result) {
+                                onSuccess: function (result) {
                                     changeResult('success', result);
                                     console.log(result.status_message);
                                     console.log(result);
                                     $("#payment-form").submit();
                                 },
-                                onPending: function(result) {
+                                onPending: function (result) {
                                     changeResult('pending', result);
                                     console.log(result.status_message);
                                     $("#payment-form").submit();
                                 },
-                                onError: function(result) {
+                                onError: function (result) {
                                     changeResult('error', result);
                                     console.log(result.status_message);
                                     $("#payment-form").submit();
@@ -200,7 +221,7 @@
                 });
 
                 var cancelButton = document.getElementById('cancel-button');
-                cancelButton.addEventListener('click', function(event) {
+                cancelButton.addEventListener('click', function (event) {
                     event.preventDefault();
                     Swal.fire({
                         title: 'Are you sure?',
