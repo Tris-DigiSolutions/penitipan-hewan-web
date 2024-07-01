@@ -16,8 +16,7 @@
 					<div class="card-body p-0">
 						<!-- Nested Row within Card Body -->
 						<div class="row" style="background-color: #F5F5DC;">
-							<div class="col-lg-5 d-none d-lg-block bg-login-image"
-								style="background-image: url('https://cdn.pixabay.com/photo/2016/05/05/13/10/young-1373879_1280.jpg'); background-size: cover;">
+							<div class="col-lg-5 d-none d-lg-block bg-login-image" style="background-image: url('https://cdn.pixabay.com/photo/2016/05/05/13/10/young-1373879_1280.jpg'); background-size: cover;">
 							</div>
 							<div class="col-lg">
 								<div class="p-5">
@@ -27,15 +26,11 @@
 									<?= $this->session->flashdata('message'); ?>
 									<form class="user" action="<?= base_url("login") ?>" method="POST">
 										<div class="form-group">
-											<input type="text"
-												class="form-control form-control-user <?= form_error('email') ? 'is-invalid' : ''; ?>"
-												id="email" name="email" placeholder="Masukkan E-mail..." autofocus>
+											<input type="text" class="form-control form-control-user <?= form_error('email') ? 'is-invalid' : ''; ?>" id="email" name="email" placeholder="Masukkan E-mail..." autofocus>
 											<?= form_error('email', '<div class="invalid-feedback font-weight-bold pl-1">', '</div>') ?>
 										</div>
 										<div class="form-group">
-											<input type="password"
-												class="form-control form-control-user <?= form_error('password') ? 'is-invalid' : ''; ?>"
-												id="password" name="password" placeholder="Password">
+											<input type="password" class="form-control form-control-user <?= form_error('password') ? 'is-invalid' : ''; ?>" id="password" name="password" placeholder="Password">
 											<?= form_error('password', '<div class="invalid-feedback font-weight-bold pl-1">', '</div>') ?>
 										</div>
 										<div class="form-group">
@@ -50,10 +45,12 @@
 										</button>
 									</form>
 									<hr>
-									<div class="text-center">
+									<!-- Lupa Password start - Sementara disable dulu hehe -->
+									<div class="text-center d-none">
 										<a class="small" href="<?= base_url("customer/auth/forgotpassword") ?>">Lupa
 											Password?</a>
 									</div>
+									<!-- Lupa Password end - Sementara disable dulu hehe -->
 									<div class="text-center">
 										<a class="small" href="<?= base_url("register") ?>">Buat Akun Baru!</a>
 									</div>

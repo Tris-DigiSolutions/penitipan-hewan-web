@@ -131,7 +131,7 @@ class Auth extends CI_Controller
 		$config = [
 			'protocol'  => 'smtp',
 			'smtp_host' => 'ssl://smtp.googlemail.com',
-			"smtp_user" => "fidzlieazriel@gmail.com",
+			"smtp_user" => "ihsan.ican2002@gmail.com",
 			"smtp_pass" => "PetshopApp123",
 			'smtp_port' => 465,
 			'mailtype'  => 'html',
@@ -140,7 +140,7 @@ class Auth extends CI_Controller
 		];
 
 		$this->email->initialize($config);
-		$this->email->from("fidzlieazriel@gmail.com", "Admin");
+		$this->email->from("ihsan.ican2002@gmail.com", "Admin");
 		$this->email->to($this->input->post("email"));
 
 		if ($type == "forgot") {
