@@ -19,5 +19,8 @@
     <link href="<?= base_url("assets/customer/vendor/datatables/dataTables.bootstrap4.min.css") ?>" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 
+    <!-- Midtrans JavaScript -->
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="<?= $this->config->item('midtrans_client_key') ?>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 </head>

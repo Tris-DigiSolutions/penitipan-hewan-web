@@ -24,28 +24,132 @@ class Grooming extends CI_Controller
 		$this->load->view("customer/groomings/index_view", $data);
 	}
 
+	// public function groomingForm()
+	// {
+	// 	$data["page_title"] = "Registrasi Pet Boarding Service";
+	// 	$this->load->view('customer/groomings/registration_view', $data);
+	// }
+
 	public function groomingRegistration()
 	{
 		$data["page_title"] = "Registrasi Pet Boarding Service";
 		$data["packages"] = $this->Grooming_model->getAllPackages();
 
-		$kuota = $this->Grooming_model->getKuota();
-		if ($kuota->kuota <= 0) {
-			$data['message'] = 'Kuota Pet Boarding penuh';
-			redirect('landing', $data);
+		$this->_groomingValidation();
+		if ($this->form_validation->run() == FALSE) {
+			$this->load->view("customer/groomings/registration_view", $data);
 		} else {
-			$this->_groomingValidation();
-			if ($this->form_validation->run() == FALSE) {
-				$this->load->view("customer/groomings/registration_view", $data);
-			} else {
-				$this->konfirmasiGrooming();
-			}
+			$customerName = htmlspecialchars($this->input->post("customer_name", true));
+			$customerPhone = htmlspecialchars($this->input->post("customer_phone"));
+			$customerAddress = htmlspecialchars($this->input->post("customer_address"));
+			$petType = $this->input->post("pet_type");
+			$packageId = $this->input->post("package_id");
+			$customerNotes = htmlspecialchars($this->input->post("notes", true));
+			$checkInDate = $this->input->post("date_created");
+			$checkOutDate = $this->input->post("date_finished");
+
+			$package = $this->Grooming_model->getPackageById($packageId);
+
+			$tarif = $petType == "Kucing" ? $package["cost_for_cat"] : $package["cost_for_dog"];
+
+			$data["grooming"] = [
+				"customer_name" => $customerName,
+				"customer_phone" => $customerPhone,
+				"customer_address" => $customerAddress,
+				"pet_type" => $petType,
+				"package_id" => $packageId,
+				"package_name" => $package["name"],
+				"tarif" => $tarif,
+				"notes" => $customerNotes,
+				"date_created" => $checkInDate,
+				"date_finished" => $checkOutDate,
+			];
+
+			// Midtrans payment
+			$transaction_details = array(
+				'order_id' => rand(),
+				'gross_amount' => $tarif,
+			);
+			$item_details = array(
+				array(
+					'id' => $packageId,
+					'price' => $tarif,
+					'name' => $package["name"],
+					'quantity' => 1
+				),
+			);
+			$customer_details = array(
+				'name' => $customerName,
+				'phone' => $customerPhone,
+				'address' => $customerAddress
+			);
+			$time = time();
+			$custom_expiry = array(
+				'start_time' => date("Y-m-d H:i:s O", $time),
+				'unit' => 'day',
+				'duration'  => 1
+			);
+			$transaction_data = array(
+				// 'data' => $data,
+				'transaction_details' => $transaction_details,
+				'item_details'       => $item_details,
+				'customer_details'   => $customer_details,
+				// 'credit_card'        => $credit_card,
+				'expiry'             => $custom_expiry
+			);
+
+			error_log(json_encode($transaction_data));
+			$snapToken = $this->midtrans->getSnapToken($transaction_data);
+			$data['snapToken'] = $snapToken;
+			error_log($snapToken);
+			echo $snapToken;
+
+			$this->load->view('customer/groomings/konfirmasi_view', $data);
 		}
 	}
 
-	public function konfirmasiGrooming()
+	// public function konfirmasiGrooming()
+	// {
+	// 	$data["page_title"] = "Konfirmasi Pet Boarding Service";
+
+
+	// 	$data["grooming"] = [
+	// 		"customer_name" => $customerName,
+	// 		"customer_phone" => $customerPhone,
+	// 		"customer_address" => $customerAddress,
+	// 		"pet_type" => $petType,
+	// 		"package_id" => $packageId,
+	// 		"package_name" => $package["name"],
+	// 		"tarif" => $tarif,
+	// 		"notes" => $customerNotes,
+	// 		"date_created" => $checkInDate,
+	// 		"date_finished" => $checkOutDate,
+	// 	];
+
+
+	// 	// $snapToken = $this->midtrans->getSnapToken($transaction_data);
+	// 	// $data['snapToken'] = $snapToken;
+
+	// 	// Terima dan decode data JSON dari request body
+	// 	// $result = json_decode($this->input->post('result_data'), true);
+
+	// 	// echo "<pre>";
+	// 	// var_dump($result);
+	// 	// echo "</pre>";
+	// 	// die;
+
+	// Insert data into the database
+
+	// }
+
+	public function finishPayment()
 	{
-		$data["page_title"] = "Konfirmasi Pet Boarding Service";
+		$result = json_decode($this->input->post("result_data"), true);
+		// echo "<pre>";
+		// var_dump($result);
+		// echo "</pre>";
+		// die;
+
 		$customerName = htmlspecialchars($this->input->post("customer_name", true));
 		$customerPhone = htmlspecialchars($this->input->post("customer_phone"));
 		$customerAddress = htmlspecialchars($this->input->post("customer_address"));
@@ -59,72 +163,8 @@ class Grooming extends CI_Controller
 
 		$tarif = $petType == "Kucing" ? $package["cost_for_cat"] : $package["cost_for_dog"];
 
-		$data["grooming"] = [
-			"customer_name" => $customerName,
-			"customer_phone" => $customerPhone,
-			"customer_address" => $customerAddress,
-			"pet_type" => $petType,
-			"package_id" => $packageId,
-			"package_name" => $package["name"],
-			"tarif" => $tarif,
-			"notes" => $customerNotes,
-			"date_created" => $checkInDate,
-			"date_finished" => $checkOutDate,
-		];
-
-		// Midtrans payment
-		$transaction_details = array(
-			'order_id' => rand(),
-			'gross_amount' => $tarif,
-		);
-		$item_details = array(
-			array(
-				'id' => $packageId,
-				'price' => $tarif,
-				// "pet_type" => $petType,
-				// "notes" => $customerNotes,
-				'quantity' => 1,
-				'name' => $package["name"]
-			),
-		);
-		$customer_details = array(
-			'name' => $customerName,
-			'phone' => $customerPhone,
-			'address' => $customerAddress
-		);
-		$time = time();
-		$custom_expiry = array(
-			'start_time' => date("Y-m-d H:i:s O", $time),
-			'unit' => 'day',
-			'duration'  => 1
-		);
-		$transaction_data = array(
-			// 'data' => $data,
-			'transaction_details' => $transaction_details,
-			'item_details'       => $item_details,
-			'customer_details'   => $customer_details,
-			// 'credit_card'        => $credit_card,
-			'expiry'             => $custom_expiry
-		);
-		// error_log(json_encode($transaction_data));
-		// $snapToken = $this->midtrans->getSnapToken($transaction_data);
-		// error_log($snapToken);
-		// echo $snapToken;
-		$snapToken = $this->midtrans->getSnapToken($transaction_data);
-		$data['snapToken'] = $snapToken;
-
-		// Terima dan decode data JSON dari request body
-		// $result = json_decode($this->input->post('result_data'), true);
-
-		// echo "<pre>";
-		// var_dump($result);
-		// echo "</pre>";
-		// die;
-
-		// // Insert data into the database
-
 		$groomingData = [
-			"order_id" => $transaction_details['order_id'],
+			"order_id" => $result['order_id'], // Get the order_id from the payment result
 			"customer_name" => $customerName,
 			"customer_phone" => $customerPhone,
 			"customer_address" => $customerAddress,
@@ -134,29 +174,20 @@ class Grooming extends CI_Controller
 			"notes" => $customerNotes,
 			"date_created" => $checkInDate,
 			"date_finished" => $checkOutDate,
-			// "status_code" => $result["status_code"],
-			// "payment_type" => $payment_result["payment_type"],
-			// "bank" => $payment_result["bank"],
-			// "va_number" => $payment_result['va_numbers'][0]['va_number'],
-			// "transaction_time" => $payment_result["transaction_time"],
+			"status_code" => $result["status_code"],
+			"payment_type" => $result["payment_type"],
+			"bank" => $result['va_numbers'][0]['bank'],
+			"va_number" => $result['va_numbers'][0]['va_number'],
+			"transaction_time" => $result["transaction_time"],
 			"grooming_status" => "Didaftarkan",
-			// "pdf_url" => $payment_result["pdf_url"],
+			"pdf_url" => $result["pdf_url"],
 		];
 
-		$this->Grooming_model->decreaseKuota();
 		$this->Grooming_model->registerGrooming($groomingData);
+		$this->Grooming_model->decreaseKuota();
 		$this->session->set_flashdata('message', 'Didaftarkan');
-		$this->load->view("customer/groomings/konfirmasi_view", $data);
+		redirect(base_url('grooming'));
 	}
-
-	// public function finishPayment()
-	// {
-	// 	$result = json_decode($this->input->post('result_data'), true);
-	// 	echo "<pre>";
-	// 	var_dump($result);
-	// 	echo "</pre>";
-	// 	die;
-	// }
 
 	// public function savePayment()
 	// {

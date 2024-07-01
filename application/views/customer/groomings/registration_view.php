@@ -43,6 +43,9 @@
                                             </div>
                                             <!-- end of alert kuota masih belom fix -->
 
+                                            <input type="hidden" name="result_type" id="result-type" value="">
+                                            <input type="hidden" name="result_data" id="result-data" value="">
+
                                             <div class="form-group mt-5">
                                                 <label for="customer_name"><i class="fas fa-user"></i> Nama Customer</label>
                                                 <input type="text" id="customer_name" name="customer_name" class="form-control <?= form_error('customer_name') ? 'is-invalid' : ''; ?>" value="<?= $this->session->userdata("name"); ?>">

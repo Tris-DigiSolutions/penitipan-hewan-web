@@ -37,8 +37,8 @@ $route['kategori/(:num)'] = 'customer/category/productcategory/$1';
 $route['tentang-kami'] = 'main/aboutus';
 // groomings
 $route['grooming'] = 'customer/grooming';
+$route['grooming/form'] = 'customer/grooming/groomingForm';
 $route['grooming/register'] = 'customer/grooming/groomingRegistration';
-$route['grooming/konfirmasi'] = 'customer/grooming/konfirmasiGrooming';
 $route['grooming/payment-success'] = 'customer/grooming/paymentSuccess';
 $route['grooming/payment-pending'] = 'customer/grooming/paymentPending';
 $route['grooming/payment-error'] = 'customer/grooming/paymentError';

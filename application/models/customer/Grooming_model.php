@@ -66,8 +66,8 @@ class Grooming_model extends CI_Model
     private function insertCustomer($customerName, $customerPhone)
     {
         $customerData = array(
-            'customer_name' => $customerName,
-            'customer_phone' => $customerPhone
+            'name' => $customerName,
+            'phone' => $customerPhone
         );
         $this->db->insert('customers', $customerData);
         return $this->db->insert_id();
