@@ -19,7 +19,6 @@
 				<section class="section">
 					<div class="section-header d-flex justify-content-between">
 						<h1><?= $page_title; ?></h1>
-						<a href="<?= base_url("kelola-admin/tambah") ?>" class="btn btn-primary btn-lg">Tambah Pet Boarding Service</a>
 					</div>
 					<!-- alert flashdata -->
 					<div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
@@ -44,6 +43,18 @@
 											IDR. <?= number_format($grooming["cost_for_dog"]) ?>
 										<?php endif; ?>
 									</p>
+									<b>Status Transaksi</b>
+									<p>
+										<?php if ($grooming["status_code"] == 200) : ?>
+											<span class="badge badge-success">Success</span>
+										<?php elseif ($grooming["status_code"] == 201) : ?>
+											<span class="badge badge-warning">Pending</span>
+										<?php else : ?>
+											<span class="badge badge-danger">Denied</span>
+										<?php endif; ?>
+									</p>
+									<b>Waktu Transaksi</b>
+									<p><?= $grooming["transaction_time"]; ?></p>
 									<b>Status Grooming</b>
 									<p>
 										<?php if ($grooming["grooming_status"] == "Didaftarkan") : ?>
@@ -58,10 +69,12 @@
 									</p>
 									<b>Jenis Paket Grooming</b>
 									<p><?= $grooming["name"]; ?></p>
-									<b>Catatan Customer</b>
-									<p><?= $grooming["notes"] ?></p>
 									<b>Tanggal Masuk</b>
 									<p><?= date('d F Y', strtotime($grooming["date_created"])); ?></p>
+									<b>Tanggal Keluar</b>
+									<p><?= date('d F Y', strtotime($grooming["date_finished"])); ?></p>
+									<b>Catatan Customer</b>
+									<p><?= $grooming["notes"] ?></p>
 								</div>
 							</div>
 						</div>
