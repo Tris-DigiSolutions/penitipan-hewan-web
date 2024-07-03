@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 29, 2024 at 11:48 AM
+-- Generation Time: Jul 03, 2024 at 09:03 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -47,7 +47,8 @@ INSERT INTO `admins` (`admin_id`, `name`, `avatar`, `email`, `password`, `role`,
 (3, 'Site Administrator', '1608357080619.png', 'admin@mail.com', '$2y$10$DsJvLX1WH3TzONzf9xYYz.JXJnY/WXwhqEbHgIuZdbD0uPphzLgqe', 'Admin', 1, '2020-12-19 05:51:51'),
 (6, 'Raafi Hilmi', 'default.jpg', 'raafi@mail.com', '$2y$10$1kSpkS8ur5Yta/cLGAFx3eyzO5DpUBMu/p8fPzK57G.Dx2FI5840a', 'Admin', 1, '2024-05-26 09:50:16'),
 (7, 'Ihsan Ramadhan', 'default.jpg', 'ihsan@mail.com', '$2y$10$YLpd5pd7jpmT6ojHa1FAk.hJRvYCZdH9iYQMsf71QKWSLJJDWRak6', 'Admin', 1, '2024-05-26 09:52:10'),
-(8, 'Dedi Murphy', 'default.jpg', 'dedi@mail.com', '$2y$10$5JBEd/pzBAxTOn4OMbJoue0W910S.CDwaiDoxQMrg3uZyckMKIUq.', 'Staff', 1, '2024-05-26 09:52:38');
+(8, 'Dedi Murphy', 'default.jpg', 'dedi@mail.com', '$2y$10$5JBEd/pzBAxTOn4OMbJoue0W910S.CDwaiDoxQMrg3uZyckMKIUq.', 'Staff', 1, '2024-05-26 09:52:38'),
+(9, 'Trio', 'default.jpg', 'trio@mail.com', '$2y$10$qdb.so.MCAznu.C4zMvL3.vOeV7tj35YRbkLO2akJhOp31yBIX7pS', 'Admin', 1, '2024-07-02 04:13:22');
 
 -- --------------------------------------------------------
 
@@ -152,8 +153,9 @@ CREATE TABLE `customers` (
 
 INSERT INTO `customers` (`customer_id`, `name`, `avatar`, `phone`, `address`, `email`, `password`, `is_active`, `created_at`) VALUES
 (6, 'Site Customer', '1608357453866.png', '081939448487', 'Jl. Bunga Matahari, No.11 Gomong Lama, Mataram', 'customer@mail.com', '$2y$10$heyAPdEKex5I3SPZ5RA92OCP8cNqpapPFRWkuF/LPFqLZeuPOVC0m', 1, '2020-12-20 10:31:12'),
-(8, 'Ihsan', 'default.jpg', '0808696969', 'Jl.GGWP', 'ihsan@gmail.com', '$2y$10$qTokr.iLm4R.pg3aPbn2nONAJud0CWaAatfuXX33QS9.GKM9AXl0a', 1, '2024-06-27 08:02:05'),
-(9, 'Ihsan Ramadhan', 'default.jpg', '0821767672', 'Jl. USBI', 'san@gmail.com', '$2y$10$b7jncRL2FC8lfDtEz6Lx/eEKSUUAEYDkcnMh86uFMj0Gig8hWXPbK', 1, '2024-05-29 06:53:18');
+(8, 'Rama', 'default.jpg', '0808696969', 'Jl.GGWP', 'ihsan@gmail.com', '$2y$10$qTokr.iLm4R.pg3aPbn2nONAJud0CWaAatfuXX33QS9.GKM9AXl0a', 1, '2024-06-30 08:03:22'),
+(9, 'Ihsan Ramadhan', 'default.jpg', '0821767672', 'Jl. USBI', 'san@gmail.com', '$2y$10$b7jncRL2FC8lfDtEz6Lx/eEKSUUAEYDkcnMh86uFMj0Gig8hWXPbK', 1, '2024-05-29 06:53:18'),
+(18, 'Raafi', 'default.jpg', '0808080', 'Jl.BSD', 'raafi@gmail.com', '$2y$10$GORbWNt8WlU2BX6Qks58uOjox4TfSVl3Q20NvZT6iKuLSXY8aZmH2', 0, '2024-07-02 04:11:50');
 
 -- --------------------------------------------------------
 
@@ -188,32 +190,25 @@ CREATE TABLE `groomings` (
   `notes` text NOT NULL,
   `status_code` char(3) NOT NULL,
   `payment_type` varchar(128) NOT NULL,
-  `bank` varchar(128) NOT NULL,
-  `va_number` varchar(128) NOT NULL,
+  `bank` varchar(128) DEFAULT NULL,
+  `va_number` varchar(128) DEFAULT NULL,
   `transaction_time` varchar(128) NOT NULL,
   `grooming_status` enum('Didaftarkan','Diterima','Dikerjakan','Selesai') NOT NULL,
-  `pdf_url` text NOT NULL
+  `pdf_url` text,
+  `kuota` enum('Pet Boarding Tersedia','Pet Boarding Penuh') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `groomings`
 --
 
-INSERT INTO `groomings` (`grooming_id`, `order_id`, `customer_id`, `customer_name`, `customer_phone`, `customer_address`, `pet_type`, `package_id`, `date_created`, `date_finished`, `notes`, `status_code`, `payment_type`, `bank`, `va_number`, `transaction_time`, `grooming_status`, `pdf_url`) VALUES
-(58, '', 8, 'Ihsan', '0808696969', 'Jl.GGWP', 'Kucing', 13, '2024-06-29', '2024-06-30', 'yang bersih yoo!', 'pen', '', '', '', '0000-00-00 00:00:00', 'Didaftarkan', ''),
-(59, '', 8, 'Ihsan', '0808696969', 'Jl.GGWP', 'Kucing', 13, '2024-06-29', '2024-06-30', 'YEyy!', 'pen', '', '', '', '0000-00-00 00:00:00', 'Didaftarkan', ''),
-(60, '', 8, 'Ihsan', '0808696969', 'Jl.GGWP', 'Anjing', 14, '2024-06-29', '2024-06-30', 'YEYy!', 'pen', '', '', '', '0000-00-00 00:00:00', 'Didaftarkan', ''),
-(61, '', 8, 'Ihsan', '0808696969', 'Jl.GGWP', 'Anjing', 15, '2024-06-29', '2024-06-30', 'bagus!', 'pen', '', '', '', '0000-00-00 00:00:00', 'Didaftarkan', ''),
-(62, '', 8, 'Ihsan', '0808696969', 'Jl.GGWP', 'Anjing', 15, '2024-06-29', '2024-06-30', 'yuk bisa yuk !', 'pen', '', '', '', '0000-00-00 00:00:00', 'Didaftarkan', ''),
-(63, '', 8, 'Ihsan', '0808696969', 'Jl.GGWP', 'Kucing', 13, '2024-06-29', '2024-06-30', 'coba ges!', 'pen', '', '', '', '0000-00-00 00:00:00', 'Didaftarkan', ''),
-(64, '', 8, 'Ihsan', '0808696969', 'Jl.GGWP', 'Kucing', 13, '2024-06-29', '2024-06-30', 'gas!', 'pen', '', '', '', '0000-00-00 00:00:00', 'Didaftarkan', ''),
-(65, '1575268168', 8, 'Ihsan', '0808696969', 'Jl.GGWP', 'Anjing', 13, '2024-06-29', '2024-06-30', 'yippie!', 'pen', '', '', '', '0000-00-00 00:00:00', 'Didaftarkan', ''),
-(66, '479645719', 8, 'Ihsan', '0808696969', 'Jl.GGWP', 'Kucing', 13, '2024-06-29', '2024-06-30', 'rawrr', '', '', '', '', '', 'Didaftarkan', ''),
-(67, '1627826966', 8, 'Ihsan', '0808696969', 'Jl.GGWP', 'Kucing', 13, '2024-06-29', '2024-06-30', 'q', '', '', '', '', '', 'Didaftarkan', ''),
-(68, '653678404', 8, 'Ihsan', '0808696969', 'Jl.GGWP', 'Kucing', 13, '2024-06-29', '2024-06-30', 'q', '', '', '', '', '', 'Didaftarkan', ''),
-(69, '1803048592', 8, 'Ihsan', '0808696969', 'Jl.GGWP', 'Kucing', 13, '2024-06-29', '2024-06-30', 'q', '', '', '', '', '', 'Didaftarkan', ''),
-(70, '2020965122', 8, 'Ihsan', '0808696969', 'Jl.GGWP', 'Kucing', 13, '2024-06-29', '2024-06-30', 'q', '', '', '', '', '', 'Didaftarkan', ''),
-(71, '1616987531', 8, 'Ihsan', '0808696969', 'Jl.GGWP', 'Anjing', 13, '2024-06-22', '2024-06-30', 't', '', '', '', '', '', 'Didaftarkan', '');
+INSERT INTO `groomings` (`grooming_id`, `order_id`, `customer_id`, `customer_name`, `customer_phone`, `customer_address`, `pet_type`, `package_id`, `date_created`, `date_finished`, `notes`, `status_code`, `payment_type`, `bank`, `va_number`, `transaction_time`, `grooming_status`, `pdf_url`, `kuota`) VALUES
+(78, '761454495', 8, 'Rama', '0808696969', 'Jl.GGWP', 'Anjing', 13, '2024-07-12', '2024-07-31', 'ooo', '201', 'bank_transfer', 'bca', '68487288766', '2024-07-01 16:35:35', 'Dikerjakan', 'https://app.sandbox.midtrans.com/snap/v1/transactions/2c02b978-02ae-4d50-902d-a1317529f493/pdf', 'Pet Boarding Tersedia'),
+(79, '467928', 8, 'Rama', '0808696969', 'Jl.GGWP', 'Kucing', 14, '2024-07-27', '2024-08-10', 'yang bersih yaa!', '200', 'bank_transfer', 'bca', '68487799697', '2024-07-01 19:49:22', 'Selesai', 'https://app.sandbox.midtrans.com/snap/v1/transactions/52b4d555-fb91-477b-af1c-5cecc5182738/pdf', 'Pet Boarding Tersedia'),
+(80, '1363951466', 8, 'Rama', '0808696969', 'Jl.GGWP', 'Kucing', 15, '2024-07-26', '2024-08-08', 'qq', '200', 'qris', NULL, NULL, '2024-07-01 20:36:09', 'Didaftarkan', NULL, 'Pet Boarding Tersedia'),
+(81, '331211436', 8, 'Rama', '0808696969', 'Jl.GGWP', 'Kucing', 13, '2024-07-06', '2024-08-10', 'qq', '201', 'bank_transfer', 'bca', '68487633907', '2024-07-01 20:58:38', 'Didaftarkan', 'https://app.sandbox.midtrans.com/snap/v1/transactions/4c27f962-712b-47ec-ba99-c0d60e6b5939/pdf', 'Pet Boarding Tersedia'),
+(82, '971509035', 18, 'Raafi', '0808080', 'Jl.BSD', 'Kucing', 12, '2024-06-04', '2024-06-06', 'Urus dengan baik, soalnya ada alergi dingin brrrr', '200', 'bank_transfer', 'bca', '68487942274', '2024-07-02 11:05:14', 'Selesai', 'https://app.sandbox.midtrans.com/snap/v1/transactions/62f3517a-37dc-4892-8bf0-ce1552dbe481/pdf', 'Pet Boarding Tersedia'),
+(83, '1034250716', 8, 'Rama', '0808696969', 'Jl.GGWP', 'Anjing', 17, '2024-06-03', '2024-06-06', 'mandiin yang wangi!', '200', 'bank_transfer', 'bca', '68487887898', '2024-07-02 11:23:32', 'Didaftarkan', 'https://app.sandbox.midtrans.com/snap/v1/transactions/fd114591-9aa6-4b79-ba51-9d9429d6581d/pdf', 'Pet Boarding Tersedia');
 
 -- --------------------------------------------------------
 
@@ -245,6 +240,24 @@ INSERT INTO `items` (`item_id`, `name`, `slug`, `images`, `stock`, `price`, `des
 (12, 'Felibite makanan kucing bentuk ikan kemasan 1 kg', 'felibite-makanan-kucing-bentuk-ikan-kemasan-1-kg', '1605565403891.jpeg', 86, 67000, 'Belanja Felibite Bentuk IKAN Makanan Kucing Kemasan 1kg indonesia Murah - Belanja Makanan Kering di Lazada. FREE ONGKIR &amp; Bisa COD', 37, '2024-05-26 19:18:38'),
 (13, 'Jual kucing bar bar', 'jual-kucing-bar-bar', '1605565534933.jpg', -1, 290000, 'Jual kucing bar bar, sangat lincah. alasan jual karena mukanya ngeselin, pengen ngajak gelud tiap liat mukanya', 40, '2024-05-26 18:43:34'),
 (16, 'Kalung Kucing Murah meriah', 'kalung-kucing-murah-meriah', '1608357774815.jpg', 48, 35000, '&lt;p&gt;Kalung kucing dengan harga murah dan terjangkau&lt;/p&gt;', 42, '2024-05-26 19:18:38');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kuota_pet_boarding`
+--
+
+CREATE TABLE `kuota_pet_boarding` (
+  `id` int(11) NOT NULL,
+  `kuota` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kuota_pet_boarding`
+--
+
+INSERT INTO `kuota_pet_boarding` (`id`, `kuota`) VALUES
+(1, 5);
 
 -- --------------------------------------------------------
 
@@ -281,6 +294,24 @@ INSERT INTO `orders` (`order_id`, `customer_id`, `receipent_name`, `receipent_ph
 (68, 8, 'Ihsan', '08086969', 'Jl.GGWP', 'transfer', 'aot.jpeg', 150000, 'Masuk', '2024-05-26 19:08:24', 'Lunas'),
 (69, 8, 'Ihsan', '08086969', 'Jl.GGWP', 'transfer', 'WhatsApp Image 2023-09-01 at 22.00.20.jpeg', 306000, 'Masuk', '2024-05-26 19:18:38', 'Lunas'),
 (70, 8, 'Ihsan', '08086969', 'Jl.GGWP', 'transfer', 'IMG_0306.MOV', 150000, 'Masuk', '2024-05-26 19:22:26', 'Lunas');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders_midtrans`
+--
+
+CREATE TABLE `orders_midtrans` (
+  `order_id` char(128) NOT NULL,
+  `nama` varchar(128) NOT NULL,
+  `gross_amount` int(128) NOT NULL,
+  `payment_type` varchar(50) NOT NULL,
+  `transaction_time` varchar(50) NOT NULL,
+  `bank` varchar(50) NOT NULL,
+  `va_number` varchar(50) NOT NULL,
+  `pdf_url` text NOT NULL,
+  `status_code` char(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -355,8 +386,24 @@ INSERT INTO `packages` (`package_id`, `name`, `slug`, `description`, `cost_for_c
 (12, 'Mandi Lengkap + Food', 'mandi-lengkap', '', 50000, 80000, '2024-05-28 14:57:26'),
 (13, 'Mandi Hewan Berjamur + Food', 'mandi-hewan-berjamur', '', 60000, 85000, '2024-05-28 14:57:37'),
 (14, 'Mandi Biasa + Food', 'mandi-biasa', '', 40000, 60000, '2024-05-28 14:57:42'),
-(15, 'Mandi Hewan berkutu + Food', 'mandi-hewan-berkutu', '', 65000, 70000, '2024-05-28 14:57:47'),
-(16, 'Mandi Aja + Food', 'mandi-aja-+-food', 'Mandi aja', 80, 100, '2024-05-29 07:04:03');
+(15, 'Mandi Hewan aja lah + Food % $ &amp; id = 13', 'mandi-hewan-aja-lah-+-food-%-$-&amp;-id-=-13', 'ini', 68000, 75000, '2024-07-02 04:16:50'),
+(17, 'Mandi Kembang + Minuman', 'mandi-kembang-+-minuman', '', 90000, 100000, '2024-07-02 04:19:16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `id` int(11) NOT NULL,
+  `transaction_id` varchar(255) NOT NULL,
+  `order_id` varchar(255) NOT NULL,
+  `gross_amount` decimal(10,2) NOT NULL,
+  `payment_type` varchar(255) NOT NULL,
+  `transaction_time` datetime NOT NULL,
+  `transaction_status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -422,11 +469,23 @@ ALTER TABLE `items`
   ADD KEY `category_id` (`category_id`);
 
 --
+-- Indexes for table `kuota_pet_boarding`
+--
+ALTER TABLE `kuota_pet_boarding`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`),
   ADD KEY `user_id` (`customer_id`);
+
+--
+-- Indexes for table `orders_midtrans`
+--
+ALTER TABLE `orders_midtrans`
+  ADD PRIMARY KEY (`order_id`);
 
 --
 -- Indexes for table `order_details`
@@ -443,6 +502,12 @@ ALTER TABLE `packages`
   ADD PRIMARY KEY (`package_id`);
 
 --
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -450,7 +515,7 @@ ALTER TABLE `packages`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `admin_tokens`
@@ -480,7 +545,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `customer_tokens`
@@ -492,13 +557,19 @@ ALTER TABLE `customer_tokens`
 -- AUTO_INCREMENT for table `groomings`
 --
 ALTER TABLE `groomings`
-  MODIFY `grooming_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `grooming_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
   MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `kuota_pet_boarding`
+--
+ALTER TABLE `kuota_pet_boarding`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -516,7 +587,13 @@ ALTER TABLE `order_details`
 -- AUTO_INCREMENT for table `packages`
 --
 ALTER TABLE `packages`
-  MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
