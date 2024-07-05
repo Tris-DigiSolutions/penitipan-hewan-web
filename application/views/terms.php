@@ -84,9 +84,6 @@
             </ul>
         </div>
 
-        <input class="form-check-input" type="checkbox" id="agree_terms" name="agree_terms" required>
-        <label class="form-check-label" for="agree_terms">Saya setuju dengan syarat dan ketentuan yang berlaku</label>
-
         <button class="btn-back" onclick="goBack()">Back</button>
     </div>
 

@@ -123,7 +123,7 @@
                                             <div class="form-group">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" id="agree_terms" name="agree_terms" required>
-                                                    <a href="<?= base_url('terms') ?>">Baca Persyaratan Selengkapnya</a>
+                                                    <a href="<?= base_url('terms') ?>">Saya setuju dengan syarat dan ketentuan yang berlaku (Klik untuk baca persyaratan selengkapnya)</a>
                                                 </div>
 
                                                 <div class="form-action d-flex justify-content-center p-3">
