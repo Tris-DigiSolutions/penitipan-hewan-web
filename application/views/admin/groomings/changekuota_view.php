@@ -27,13 +27,17 @@
                         <div class="col-8">
                             <div class="card">
                                 <div class="card-body">
-
                                     <form action="<?= base_url("admin/grooming/changeKuota") ?>" method="post">
                                         <div class="form-group">
                                             <label for="kuota">Kuota Pet Boarding:</label>
                                             <input class="form-control" type="number" id="kuota" name="kuota" placeholder="<?= $total_kuota; ?>" required>
                                         </div>
                                         <button class="btn btn-primary mt-3" type="submit">Ubah Kuota</button>
+                                    </form>
+                                    <!-- Form untuk reset kuota -->
+                                    <form method="post" action="<?= base_url('admin/Grooming/resetKuota'); ?>">
+                                        <input type="hidden" name="kuota" value="10">
+                                        <button class="btn btn-warning mt-3" type="submit">Reset Kuota</button>
                                     </form>
                                 </div>
                             </div>

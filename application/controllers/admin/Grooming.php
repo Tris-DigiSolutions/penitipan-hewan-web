@@ -53,6 +53,19 @@ class Grooming extends CI_Controller
 		}
 	}
 
+	public function resetKuota()
+	{
+		// Reset kuota menjadi 10
+		$result = $this->Grooming_model->resetKuota(10);
+
+		if ($result) {
+
+			$this->session->set_flashdata('message', 'Kuota berhasil direset.');
+		}
+		// Redirect kembali ke halaman sebelumnya
+		redirect('kuota-boarding');
+	}
+
 	public function detail($id)
 	{
 		$data["page_title"] = "Detail Data Pet Boarding";

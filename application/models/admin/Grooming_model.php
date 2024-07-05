@@ -45,6 +45,15 @@ class Grooming_model extends CI_Model
 		return $this->db->update('kuota_pet_boarding', $data);
 	}
 
+	public function resetKuota($kuota)
+	{
+		$data = array(
+			'kuota' => $kuota
+		);
+
+		return $this->db->update('kuota_pet_boarding', $data);
+	}
+
 	// Fungsi untuk mengurangi kuota setelah pendaftaran berhasil
 	public function decreaseKuota()
 	{
