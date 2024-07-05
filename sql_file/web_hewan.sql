@@ -140,7 +140,7 @@ CREATE TABLE `customers` (
   `name` varchar(128) NOT NULL,
   `avatar` varchar(255) NOT NULL,
   `phone` char(15) NOT NULL,
-  `address` text NOT NULL,
+  `address` text DEFAULT NULL,
   `email` varchar(128) NOT NULL,
   `password` varchar(255) NOT NULL,
   `is_active` int(11) NOT NULL,

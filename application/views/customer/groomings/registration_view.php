@@ -61,6 +61,7 @@
                                                     Customer</label>
                                                 <textarea name="customer_address" id="customer_address" rows="3" class="form-control <?= form_error('customer_address') ? 'is-invalid' : ''; ?>"><?= $this->session->userdata("address"); ?></textarea>
                                                 <?= form_error('customer_address', '<div class="invalid-feedback font-weight-bold pl-1">', '</div>') ?>
+                                                <small>*Jika ingin menyimpan alamat lakukan update profile di halaman profile</small>
                                             </div>
 
                                             <div class="form-group">
@@ -119,16 +120,16 @@
                                             </div>
 
                                             <!-- Agreement Section -->
-                                            <div class="form-group">                                        
+                                            <div class="form-group">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" id="agree_terms" name="agree_terms" required>
                                                     <a href="<?= base_url('terms') ?>">Baca Persyaratan Selengkapnya</a>
-                                            </div>
+                                                </div>
 
-                                            <div class="form-action d-flex justify-content-center p-3">
-                                                <button type="submit" class="btn btn-primary mr-4 p-2"><i class="fas fa-check"></i> Register Pet Boarding Service</button>
-                                                <a href="<?= base_url('landing'); ?>" class="btn btn-warning p-2"><i class="fas fa-times"></i> Batalkan</a>
-                                            </div>
+                                                <div class="form-action d-flex justify-content-center p-3">
+                                                    <button type="submit" class="btn btn-primary mr-4 p-2"><i class="fas fa-check"></i> Register Pet Boarding Service</button>
+                                                    <a href="<?= base_url('landing'); ?>" class="btn btn-warning p-2"><i class="fas fa-times"></i> Batalkan</a>
+                                                </div>
                                         </form>
                                     <?php endif; ?>
                                 </div>

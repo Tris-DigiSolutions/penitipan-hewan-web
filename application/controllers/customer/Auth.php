@@ -83,7 +83,7 @@ class Auth extends CI_Controller
 			$name = htmlspecialchars($this->input->post("name", true));
 			$email = htmlspecialchars($this->input->post("email", true));
 			$phone = htmlspecialchars($this->input->post("phone", true));
-			$address = htmlspecialchars($this->input->post("address", true));
+			// $address = htmlspecialchars($this->input->post("address", true));
 			$avatar = "default.jpg";
 			$password = password_hash($this->input->post("password"), PASSWORD_DEFAULT);
 			$isActive = 1;
@@ -94,10 +94,11 @@ class Auth extends CI_Controller
 				'avatar' => $avatar,
 				'email' => $email,
 				'phone' => $phone,
-				'address' => $address,
+				// 'address' => $address,
 				'password' => $password,
 				'is_active' => $isActive,
 			];
+
 			$this->Auth_model->userRegistration($userData);
 			$this->session->set_flashdata('message', '<div class="alert alert-success">Berhasil Register! Silahkan Login</div>');
 			redirect("login");
@@ -260,7 +261,7 @@ class Auth extends CI_Controller
 		$this->form_validation->set_rules('phone', 'Nomor Ponsel', 'required|trim|is_unique[customers.phone]', [
 			'is_unique' => 'Nomor Ponsel ini sudah digunakan'
 		]);
-		$this->form_validation->set_rules('address', 'Alamat', 'required|trim');
+		// $this->form_validation->set_rules('address', 'Alamat', 'required|trim');
 		$this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[4]', [
 			'min_length' => 'Password minimal harus 4 karakter'
 		]);
