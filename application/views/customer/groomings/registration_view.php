@@ -28,7 +28,7 @@
                         </h1>
                     </div>
 
-                    <div class="card border border-primary border-3 shadow p-3 mb-5 rounded-5" style="border-radius: 1rem;">
+                    <div class="card border border-primary border-3 shadow p-3 mb-5 rounded-5" style="border-radius: 1rem; width: 70%">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-8 mx-auto">
@@ -119,37 +119,11 @@
                                             </div>
 
                                             <!-- Agreement Section -->
-                                            <div class="form-group">
-                                                <label><i class="fas fa-clipboard-check"></i> Persetujuan dan
-                                                    Ketentuan</label>
+                                            <div class="form-group">                                        
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" id="agree_terms" name="agree_terms" required>
-                                                    <label class="form-check-label" for="agree_terms">
-                                                        Saya setuju dengan syarat dan ketentuan yang berlaku, termasuk:
-                                                        <ul class="mt-2">
-                                                            <li>Hewan dalam kondisi sehat dan tidak menular</li>
-                                                            <li>Hewan tidak memiliki perilaku agresif</li>
-                                                            <li>Pemilik bertanggung jawab atas kerusakan yang ditimbulkan
-                                                                hewan</li>
-                                                            <li>Penitipan hewan berhak menolak hewan yang tidak sesuai
-                                                                dengan syarat dan ketentuan</li>
-                                                        </ul>
-                                                    </label>
-                                                </div>
+                                                    <a href="<?= base_url('terms') ?>">Baca Persyaratan Selengkapnya</a>
                                             </div>
-
-                                            <!-- Tips Section -->
-                                            <div class="form-group">
-                                                <label><i class="fas fa-lightbulb"></i> Tips:</label>
-                                                <ul>
-                                                    <li>Baca dengan cermat syarat dan ketentuan penitipan hewan sebelum
-                                                        mengisi formulir.</li>
-                                                    <li>Pastikan semua informasi yang Anda berikan akurat dan lengkap.</li>
-                                                    <li>Tanyakan kepada penitipan hewan jika Anda memiliki pertanyaan atau
-                                                        keraguan.</li>
-                                                </ul>
-                                            </div>
-
 
                                             <div class="form-action d-flex justify-content-center p-3">
                                                 <button type="submit" class="btn btn-primary mr-4 p-2"><i class="fas fa-check"></i> Register Pet Boarding Service</button>
