@@ -193,7 +193,7 @@ CREATE TABLE `groomings` (
   `bank` varchar(128) DEFAULT NULL,
   `va_number` varchar(128) DEFAULT NULL,
   `transaction_time` varchar(128) NOT NULL,
-  `grooming_status` enum('Didaftarkan','Diterima','Dikerjakan','Selesai') NOT NULL,
+  `grooming_status` enum('Didaftarkan','Dikerjakan','Selesai') NOT NULL,
   `pdf_url` text,
   `kuota` enum('Pet Boarding Tersedia','Pet Boarding Penuh') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

@@ -38,7 +38,7 @@ class Grooming extends CI_Controller
 		$kuota = $this->Grooming_model->getKuota();
 		if ($kuota->kuota <= 0) {
 			$this->session->set_flashdata('message', 'Kuota Pet Boarding penuh');
-			redirect('landing', $data);
+			redirect('landing');
 		} else {
 
 			$this->_groomingValidation();

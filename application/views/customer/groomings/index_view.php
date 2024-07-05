@@ -69,8 +69,6 @@
 												</td>
 												<td>
 													<?php if ($grooming["grooming_status"] == "Didaftarkan") : ?>
-														<span class="badge badge-secondary"><?= $grooming["grooming_status"] ?></span>
-													<?php elseif ($grooming["grooming_status"] == "Diterima") : ?>
 														<span class="badge badge-info"><?= $grooming["grooming_status"] ?></span>
 													<?php elseif ($grooming["grooming_status"] == "Dikerjakan") : ?>
 														<span class="badge badge-warning"><?= $grooming["grooming_status"] ?></span>

@@ -33,22 +33,14 @@
 											<select name="grooming_status" id="grooming_status" class="form-control">
 												<?php if ($grooming["grooming_status"] == "Didaftarkan") : ?>
 													<option value="Didaftarkan" selected>Didaftarkan</option>
-													<option value="Diterima">Diterima</option>
-													<option value="Dikerjakan">Dikerjakan</option>
-													<option value="Selesai">Selesai</option>
-												<?php elseif ($grooming["grooming_status"] == "Diterima") : ?>
-													<option value="Didaftarkan" disabled>Didaftarkan</option>
-													<option value="Diterima" selected>Diterima</option>
 													<option value="Dikerjakan">Dikerjakan</option>
 													<option value="Selesai">Selesai</option>
 												<?php elseif ($grooming["grooming_status"] == "Dikerjakan") : ?>
 													<option value="Didaftarkan" disabled>Didaftarkan</option>
-													<option value="Diterima" disabled>Diterima</option>
 													<option value="Dikerjakan" selected>Dikerjakan</option>
 													<option value="Selesai">Selesai</option>
 												<?php else : ?>
 													<option value="Didaftarkan" disabled>Didaftarkan</option>
-													<option value="Diterima" disabled>Diterima</option>
 													<option value="Dikerjakan" disabled>Dikerjakan</option>
 													<option value="Selesai" selected>Selesai</option>
 												<?php endif; ?>
