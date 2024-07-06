@@ -1,6 +1,6 @@
 # PetShop
 
-PetShop adalah e-commerce untuk Website layanan toko petshop yang dibuat dengan Codeigniter. Tujuannya adalah mengimplementasikan framework Codeingniter untuk Website berskala besar dan mempermudah UMKM petshop untuk terkoneksi dengan customernya.
+PetShop adalah Website layanan pet boarding yang dibuat dengan Codeigniter. Tujuannya adalah mengimplementasikan framework Codeingniter untuk Website berskala besar dan mempermudah UMKM petshop untuk terkoneksi dengan customernya.
 
 # How to Run?
 
