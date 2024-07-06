@@ -53,7 +53,7 @@
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
 											<div class="text-md font-weight-bold text-white text-uppercase mb-1">Jumlah Transaksi</div>
-											<div class="h1 mb-0 font-weight-bold text-white"><?= $total_orders; ?></div>
+											<div class="h1 mb-0 font-weight-bold text-white"><?= $total_groomings; ?></div>
 										</div>
 										<div><i class="fas fa-credit-card"></i></div>
 									</div>

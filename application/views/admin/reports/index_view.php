@@ -103,17 +103,17 @@
 
         $(document).ready(function() { // Ketika halaman selesai di load
 
-            $('#form-bulan, #form-tahun').hide(); // Sebagai default kita sembunyikan form filter tanggal, bulan & tahunnya
+            $('#form-bulan, #form-tahun').hide(); // Sebagai default kita sembunyikan form filter bulan & tahunnya
             $('#filter').change(function() { // Ketika user memilih filter
-                if ($(this).val() == '1') { // Jika filter nya 1 (per tanggal)
-                    $('#form-bulan').show(); // Tampilkan form tanggal
-                    $('#form-tahun').show(); // Sembunyikan form bulan dan tahun
-                } else { // Jika filternya 3 (per tahun)
-                    $('#form-bulan').hide(); // Sembunyikan form tanggal dan bulan
+                if ($(this).val() == '1') { // Jika filter nya 1 (per bulan)
+                    $('#form-bulan').show(); // Tampilkan form bulan
+                    $('#form-tahun').show(); // Tampilkan form tahun
+                } else { // Jika filternya 2 (per tahun)
+                    $('#form-bulan').hide(); // Sembunyikan form bulan
                     $('#form-tahun').show(); // Tampilkan form tahun
                 }
 
-                $('#form-tanggal input, #form-bulan select, #form-tahun select').val(''); // Clear data pada textbox tanggal, combobox bulan & tahun
+                $('#month, #years').val(''); // Clear data pada textbox month & years
             })
         })
     </script>

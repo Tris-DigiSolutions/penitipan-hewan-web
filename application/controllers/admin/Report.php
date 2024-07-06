@@ -23,19 +23,7 @@ class Report extends CI_Controller
         if (isset($_GET["reports"]) && !empty($_GET["reports"])) {
             $reports = $_GET["reports"];
             // jika jenis laporan yang dipilih penjualan
-            if ($reports == '1') {
-
-                // cek apakah user sudah memfilter laporan
-                if (isset($_GET["filter"]) && !empty($_GET["filter"])) {
-                    $filter = $_GET["filter"];
-                    // jika user memfilter dari bulan
-                    if ($filter == "1") {
-                        $this->_printTransaksiReportByMonth();
-                    } else {
-                        $this->_printTransaksiReportByYear();
-                    }
-                }
-            } else {
+            if ($reports) {
                 // cek apakah user sudah memfilter laporan
                 if (isset($_GET["filter"]) && !empty($_GET["filter"])) {
                     $filter = $_GET["filter"];
@@ -48,56 +36,6 @@ class Report extends CI_Controller
                 }
             }
         }
-    }
-
-    private function _printTransaksiReportByMonth()
-    {
-        $bulan = $_GET["month"];
-        $tahun = $_GET["years"];
-        $namaBulan = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
-
-        $data["keterangan"] = "Data Penjualan Bulan " . $namaBulan[$bulan] . " " . $tahun;
-        $data["url_cetak"] = 'laporan/cetak?filter=1&bulan=' . $bulan . '&tahun=' . $tahun;
-        $data["transaksi"] = $this->Report_model->viewPenjualanByMonth($bulan, $tahun);
-        if (!$data["transaksi"]) {
-            $this->session->set_flashdata('message', 'Data tidak ditemukan');
-            redirect("laporan");
-        }
-        // cetak laporan
-        ob_start();
-        $this->load->view("admin/reports/report_transaksi_view", $data);
-        $html = ob_get_contents();
-        ob_end_clean();
-
-        require './assets/html2pdf/autoload.php';
-
-        $pdf = new Spipu\Html2Pdf\Html2Pdf('L', 'A4', 'en');
-        $pdf->WriteHTML($html);
-        $pdf->Output('LAPORAN_TRANSAKSI_BULANAN.pdf', 'D');
-    }
-
-    private function _printTransaksiReportByYear()
-    {
-        $tahun = $_GET["years"];
-
-        $data["keterangan"] = "Data Penjualan tahun " . $tahun;
-        $data["url_cetak"] = "laporan/cetak?filter=2&tahun=" . $tahun;
-        $data["transaksi"] = $this->Report_model->viewPenjualanByYear($tahun);
-        if (!$data["transaksi"]) {
-            $this->session->set_flashdata('message', 'Data tidak ditemukan');
-            redirect("laporan");
-        }
-        // cetak laporan
-        ob_start();
-        $this->load->view("admin/reports/report_transaksi_view", $data);
-        $html = ob_get_contents();
-        ob_end_clean();
-
-        require './assets/html2pdf/autoload.php';
-
-        $pdf = new Spipu\Html2Pdf\Html2Pdf('L', 'A4', 'en');
-        $pdf->WriteHTML($html);
-        $pdf->Output('LAPORAN_TRANSAKSI_TAHUNAN.pdf', 'D');
     }
 
     private function _printGroomingReportsByMonth()
@@ -121,7 +59,7 @@ class Report extends CI_Controller
 
         require './assets/html2pdf/autoload.php';
 
-        $pdf = new Spipu\Html2Pdf\Html2Pdf('P', 'A4', 'en');
+        $pdf = new Spipu\Html2Pdf\Html2Pdf('L', 'A4', 'en');
         $pdf->WriteHTML($html);
         $pdf->Output('LAPORAN_PET_BOARDING_BULANAN.pdf', 'D');
     }
@@ -145,7 +83,7 @@ class Report extends CI_Controller
 
         require './assets/html2pdf/autoload.php';
 
-        $pdf = new Spipu\Html2Pdf\Html2Pdf('P', 'A4', 'en');
+        $pdf = new Spipu\Html2Pdf\Html2Pdf('L', 'A4', 'en');
         $pdf->WriteHTML($html);
         $pdf->Output('LAPORAN_PET_BOARDING_TAHUNAN.pdf', 'D');
     }

@@ -6,8 +6,6 @@ class Grooming extends CI_Controller
 		parent::__construct();
 		$this->load->library('form_validation');
 		$this->load->model('customer/Grooming_model', 'Grooming_model');
-		// $this->load->model('admin/Grooming_model', 'adminGrooming_model');
-		$this->load->model('customer/Payment_model', 'Payment_model');
 		if ($this->session->userdata("logged_in") !== "customer") {
 			redirect("login");
 		}

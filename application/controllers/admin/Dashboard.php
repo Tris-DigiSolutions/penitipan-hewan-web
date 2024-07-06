@@ -17,9 +17,7 @@ class Dashboard extends CI_Controller
 	{
 		$data["page_title"] = "Dashboard";
 		$data["total_customers"] = $this->Dashboard_model->countAllCustomers();
-		$data["total_products"] = $this->Dashboard_model->countAllProducts();
 		$data["total_groomings"] = $this->Dashboard_model->countAllGroomings();
-		$data["total_orders"] = $this->Dashboard_model->countAllOrders();
 		$data["total_kuota"] = $this->Dashboard_model->countKuota();
 
 		$this->load->view("admin/dashboard_view", $data);
