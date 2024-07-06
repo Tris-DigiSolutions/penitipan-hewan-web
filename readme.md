@@ -14,6 +14,30 @@ Buka aplikasi XAMPP lalu jalankan Apache & sql
 
 Buka Chrome ketik url : https://localhost/penitipan-hewan-web
 
+## 1. Installation
+
+### 1.A Composer Installation
+
+If you are using [Composer](https://getcomposer.org), you can install via composer CLI:
+
+```
+composer require midtrans/midtrans-php
+```
+
+**or**
+
+add this require line to your `composer.json` file:
+
+```json
+{
+	"require": {
+		"midtrans/midtrans-php": "2.*"
+	}
+}
+```
+
+and run `composer install` on your terminal.
+
 # Install On Windows, MacOS, Linux ✅
 
 ```bash
