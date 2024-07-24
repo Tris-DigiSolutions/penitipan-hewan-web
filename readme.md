@@ -2,7 +2,7 @@
 
 PetShop adalah Website layanan pet boarding yang dibuat dengan Codeigniter. Tujuannya adalah mengimplementasikan framework Codeingniter untuk Website berskala besar dan mempermudah UMKM petshop untuk terkoneksi dengan customernya.
 
-Dikembangkan menggunakan XAMPP v.5.6.40 Rev.1 iOS
+Dikembangkan menggunakan XAMPP v.5.6.40 Rev.1 MacOS
 
 # How to Run?
 
